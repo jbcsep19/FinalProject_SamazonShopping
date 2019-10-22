@@ -8,7 +8,7 @@ import java.util.Collection;
 public class Order {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    private long id;
+    private long orderId;
     private double total_cost;
 
     @ManyToOne
@@ -16,19 +16,10 @@ public class Order {
             inverseJoinColumns = @JoinColumn(name="user_id"))
     private User user;
 
-    @OneToMany
+    @ManyToMany
     private Collection<Product> products;
 
     public Order(){}
-
-
-    public long getId() {
-        return id;
-    }
-
-    public void setId(long id) {
-        this.id = id;
-    }
 
     public double getTotal_cost() {
         return total_cost;
@@ -54,6 +45,10 @@ public class Order {
         this.products = products;
     }
 
+    public long getOrderId() { return orderId; }
+
+    public void setOrderId(long orderId) { this.orderId = orderId; }
+
     public double calculateCost(){
         double total = 0;
         ArrayList<Product> products = new ArrayList<>(getProducts());
@@ -76,4 +71,6 @@ public class Order {
         }
         return shippingCost;
     }
+
+
 }

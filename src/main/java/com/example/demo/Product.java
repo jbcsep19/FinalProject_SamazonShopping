@@ -1,32 +1,23 @@
 package com.example.demo;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
+import java.util.Collection;
 
 @Entity
 public class Product {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    private long id;
+    private long productId;
 
     private String name;
-    private String details;
-    private double  price;
+    private String description;
+    private double price;
     private boolean active;
-
-    private static int quantity;
+//    private int quantity;
+    @ManyToMany(mappedBy = "products")
+    private Collection<Order> orders;
 
     public Product(){}
-
-    public long getId() {
-        return id;
-    }
-
-    public void setId(long id) {
-        this.id = id;
-    }
 
     public String getName() {
         return name;
@@ -34,14 +25,6 @@ public class Product {
 
     public void setName(String name) {
         this.name = name;
-    }
-
-    public String getDetails() {
-        return details;
-    }
-
-    public void setDetails(String details) {
-        this.details = details;
     }
 
     public double getPrice() {
@@ -60,11 +43,31 @@ public class Product {
         this.active = active;
     }
 
-    public static int getQuantity() {
+/*   public static int getQuantity() {
         return quantity;
     }
 
     public static void setQuantity(int quantity) {
         Product.quantity = quantity;
+    }
+*/
+    public long getProductId() { return productId; }
+
+    public void setProductId(long productId) { this.productId = productId; }
+
+    public String getDescription() {
+        return description;
+    }
+
+    public void setDescription(String description) {
+        this.description = description;
+    }
+
+    public Collection<Order> getOrders() {
+        return orders;
+    }
+
+    public void setOrders(Collection<Order> orders) {
+        this.orders = orders;
     }
 }
