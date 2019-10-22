@@ -67,12 +67,13 @@ public class Order {
         return getProducts().size();
     }
 
-    public double shipping(){
+    public double calculateShipping(){
         double cost = calculateCost();
+        double shippingCost = 0;
         if(cost < 50){
-            double shippingCost =  (cost * .05);
-            cost += shippingCost;
+            shippingCost =  (cost * .05);
+            return shippingCost;
         }
-        return cost;
+        return shippingCost;
     }
 }
