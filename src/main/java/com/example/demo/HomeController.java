@@ -14,7 +14,7 @@ import java.util.Date;
 public class HomeController {
 
     @Autowired
-    MyProductRepository productRepository;
+    ProductRepository productRepository;
 
     @Autowired
     UserService userService;
@@ -38,7 +38,7 @@ public class HomeController {
 
     @RequestMapping("/add")
     public String addProduct(Model model){
-        model.addAttribute("product", new MyProduct());
+        model.addAttribute("product", new Product());
         return "productform";
     }
 
@@ -80,7 +80,7 @@ public class HomeController {
             model.addAttribute("products", productRepository.findByNameContainingIgnoreCase(search));
         }
         else if(category.equals("2")){
-            model.addAttribute("jobs", productRepository.findByDetailsContainingIgnoreCase(search));
+            model.addAttribute("jobs", productRepository.findByDescriptionContainingIgnoreCase(search));
         }
         return "searchlist";
     }

@@ -10,14 +10,14 @@ import org.springframework.mail.SimpleMailMessage;
 import org.springframework.mail.javamail.JavaMailSender;
 import org.springframework.mail.javamail.MimeMessageHelper;
 
-<<<<<<< HEAD
+
 import javax.mail.MessagingException;
 import javax.mail.internet.MimeMessage;
 import java.io.IOException;
-=======
+
 import java.io.File;
 import java.util.ArrayList;
->>>>>>> b2105af9b743c89f0e43fa4fbf65d79e66f6fcf5
+
 import java.util.Arrays;
 import java.util.Scanner;
 
@@ -29,8 +29,8 @@ public class DataLoader implements CommandLineRunner {
     @Autowired
     RoleRepository roleRepository;
 
-    @Autowired
-    private BCryptPasswordEncoder passwordEncoder;
+//    @Autowired
+//    private BCryptPasswordEncoder passwordEncoder;
 
     @Autowired
     private JavaMailSender javaMailSender;
@@ -43,16 +43,19 @@ public class DataLoader implements CommandLineRunner {
         Role adminRole = roleRepository.findByRole("ADMIN");
         Role userRole = roleRepository.findByRole("USER");
 
-        User user = new User("mark@user.com", "password", "Mark", "User", true, "mark", "user");
+        User user = new User("mark@user.com", "password", "Mark", "User",
+                true, "mark", "user");
+        System.out.println(user.getPassword());
         user.setRoles(Arrays.asList(userRole));
         userRepository.save(user);
 
-        user = new User("admin@admin.com", "password", "Admin", "User", true, "admin", "administrator");
+        user = new User("admin@admin.com", "password", "Admin", "User",
+                true, "admin", "administrator");
         user.setRoles(Arrays.asList(adminRole));
         userRepository.save(user);
 
 
-       /* System.out.println("Sending Email...");
+        /* System.out.println("Sending Email...");
 
         try {
             sendEmail();

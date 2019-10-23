@@ -15,7 +15,10 @@ public class Product {
     private String imageURL;
     private boolean active;
 //    private int quantity;
-    @ManyToMany(mappedBy = "products")
+
+    @ManyToMany
+    @JoinTable(joinColumns = @JoinColumn(name="product_id"),
+            inverseJoinColumns = @JoinColumn(name="order_id"))
     private Collection<Order> orders;
 
     public Product(){}

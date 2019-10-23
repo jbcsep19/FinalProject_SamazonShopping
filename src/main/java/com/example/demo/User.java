@@ -31,24 +31,40 @@ public class User {
     @Column(name="username")
     private String username;
 
-    @ManyToMany(fetch = FetchType.EAGER)
+    @Column(name="position")
+    private String position;
+
+    @ManyToMany
     @JoinTable(joinColumns = @JoinColumn(name="user_id"),
             inverseJoinColumns = @JoinColumn(name="role_id"))
     private Collection<Role> roles;
 
-    @OneToMany
-    Collection<Order> orders;
+    @OneToMany(mappedBy = "user", cascade = CascadeType.ALL)
+    private Collection<Order> orders;
 
     public User() {
     }
 
-    public User(String email, String password, String firstName, String lastName, boolean enabled, String username) {
+    /*public User(String email, String password, String firstName, String lastName, boolean enabled, String username, String position) {
         this.setEmail(email);
         this.setPassword(password);
         this.setFirstName(firstName);
         this.setLastName(lastName);
         this.setEnabled(enabled);
         this.setUsername(username);
+        this.setPosition(position);
+    }*/
+
+
+    public User(String email, String password, String firstName, String lastName,
+                boolean enabled, String username, String position) {
+        this.email = email;
+        this.setPassword(password);
+        this.firstName = firstName;
+        this.lastName = lastName;
+        this.enabled = enabled;
+        this.username = username;
+        this.position = position;
     }
 
     public long getId() {
@@ -107,6 +123,14 @@ public class User {
 
     public void setUsername(String username) {
         this.username = username;
+    }
+
+    public String getPosition() {
+        return position;
+    }
+
+    public void setPosition(String position) {
+        this.position = position;
     }
 
     public Collection<Role> getRoles() {

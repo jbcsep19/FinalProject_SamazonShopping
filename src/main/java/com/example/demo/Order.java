@@ -5,18 +5,20 @@ import java.util.ArrayList;
 import java.util.Collection;
 
 @Entity
+@Table(name="Orders")
 public class Order {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    private long orderId;
+    private long OrderId;
     private double total_cost;
 
-    @ManyToOne
-    @JoinTable(joinColumns = @JoinColumn (name="order_id"),
-            inverseJoinColumns = @JoinColumn(name="user_id"))
+    @ManyToOne (fetch = FetchType.EAGER)
+   /* @JoinTable(joinColumns = @JoinColumn (name="order_id"),
+            inverseJoinColumns = @JoinColumn(name="user_id"))*/
+    @JoinColumn (name="user_id")
     private User user;
 
-    @ManyToMany
+    @ManyToMany (mappedBy = "orders")
     private Collection<Product> products;
 
     public Order(){}
@@ -45,9 +47,9 @@ public class Order {
         this.products = products;
     }
 
-    public long getOrderId() { return orderId; }
+    public long getOrderId() { return OrderId; }
 
-    public void setOrderId(long orderId) { this.orderId = orderId; }
+    public void setOrderId(long orderId) { this.OrderId = orderId; }
 
     public double calculateCost(){
         double total = 0;
