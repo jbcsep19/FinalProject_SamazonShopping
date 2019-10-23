@@ -60,7 +60,9 @@ public class Order {
     }
 
     public int productQuantity(){
+
         return getProducts().size();
+
     }
 
     public double calculateShipping(){
