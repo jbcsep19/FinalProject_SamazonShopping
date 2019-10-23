@@ -36,6 +36,9 @@ public class User {
             inverseJoinColumns = @JoinColumn(name="role_id"))
     private Collection<Role> roles;
 
+    @OneToMany
+    Collection<Order> orders;
+
     public User() {
     }
 
@@ -113,4 +116,8 @@ public class User {
     public void setRoles(Collection<Role> roles) {
         this.roles = roles;
     }
+
+    public Collection<Order> getOrders() { return orders; }
+
+    public void setOrders(Collection<Order> orders) { this.orders = orders; }
 }

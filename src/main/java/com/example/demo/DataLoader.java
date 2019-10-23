@@ -10,10 +10,16 @@ import org.springframework.mail.SimpleMailMessage;
 import org.springframework.mail.javamail.JavaMailSender;
 import org.springframework.mail.javamail.MimeMessageHelper;
 
+<<<<<<< HEAD
 import javax.mail.MessagingException;
 import javax.mail.internet.MimeMessage;
 import java.io.IOException;
+=======
+import java.io.File;
+import java.util.ArrayList;
+>>>>>>> b2105af9b743c89f0e43fa4fbf65d79e66f6fcf5
 import java.util.Arrays;
+import java.util.Scanner;
 
 @Component
 public class DataLoader implements CommandLineRunner {
@@ -102,5 +108,22 @@ public class DataLoader implements CommandLineRunner {
         javaMailSender.send(msg);
 
     }*/
+    }
+
+
+    public void loadFromFile(){
+       File file = new File("C:\\Downlaods\\ Magneto Megafood.txt");
+       try{
+           Scanner scan = new Scanner(file);
+           while(scan.hasNextLine()){
+               String[] product_data = scan.nextLine().split("\t");
+               boolean active = Boolean.parseBoolean(product_data[4]);
+               Product product = new Product(product_data[0], product_data[1], product_data[2],
+                       product_data[3], active);        //name, description, price, URL, active
+           }
+       }catch(Exception FileNotFoundException){
+           System.out.println("File exception");
+       }
+
     }
 }
