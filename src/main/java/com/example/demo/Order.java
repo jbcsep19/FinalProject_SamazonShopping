@@ -49,28 +49,38 @@ public class Order {
 
     public void setOrderId(long orderId) { this.orderId = orderId; }
 
-    public double calculateCost(){
-        double total = 0;
+    public String calculateCost(){
+        double total = 0.0;
         ArrayList<Product> products = new ArrayList<>(getProducts());
         for (Product prod : products){
             double price = Double.parseDouble(prod.getPrice());
             total += price;
         }
-        return total;
+        return Double.toString(total);
     }
 
     public int productQuantity(){
         return getProducts().size();
     }
 
-    public double calculateShipping(){
-        double cost = calculateCost();
-        double shippingCost = 0;
+    public String calculateShipping(){
+        String costString = calculateCost();
+        double cost = (Double.valueOf(costString)).doubleValue();
+        double shippingCost = 0.0;
         if(cost < 50){
             shippingCost =  (cost * .05);
-            return shippingCost;
+            return Double.toString(shippingCost);
         }
-        return shippingCost;
+        return Double.toString(shippingCost);
+    }
+
+    public String costPlusShipping(){
+       String shippingString = calculateShipping();
+        double shipping = (Double.valueOf(shippingString)).doubleValue();
+        String productString = calculateCost();
+        double productCost = (Double.valueOf(productString)).doubleValue();
+
+        return Double.toString(shipping + productCost);
     }
 
 
