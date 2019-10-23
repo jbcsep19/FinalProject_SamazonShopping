@@ -66,7 +66,7 @@ Magneto Vitamin Store Requirements:
           5. User should be able to search for products containing any or all the words entered.
                   Note: You can decide how you want to present the results. 
           6. Sites should charge shipping on every order but offer free shipping for orders > $50.00.
-          7. Search form in the navbar which allows the user to search for items in the store or their order history. 
+          7. Search form in the navbar which allows the user to search for items in the store or their order history
 
   
   Security(Login Role levels and access):
@@ -88,4 +88,4 @@ Magneto Vitamin Store Requirements:
 ------------------
 
   Change Request (Wednesday 10/23/2019 3:00 PM, Submitted By Jennifer Lee):
-      C1. Allow users to have a wishlist, from which they can add items to the cart.
+      C1. Allow users to have a wishlist, from which they can add items to the cart
