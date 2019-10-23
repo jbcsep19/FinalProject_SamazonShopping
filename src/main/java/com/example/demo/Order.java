@@ -53,7 +53,8 @@ public class Order {
         double total = 0;
         ArrayList<Product> products = new ArrayList<>(getProducts());
         for (Product prod : products){
-            total += prod.getPrice();
+            double price = Double.parseDouble(prod.getPrice());
+            total += price;
         }
         return total;
     }

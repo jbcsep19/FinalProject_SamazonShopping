@@ -11,13 +11,22 @@ public class Product {
 
     private String name;
     private String description;
-    private double price;
+    private String price;
+    private String imageURL;
     private boolean active;
 //    private int quantity;
     @ManyToMany(mappedBy = "products")
     private Collection<Order> orders;
 
     public Product(){}
+
+    public Product( String name, String description, String price, String image, boolean active){
+        this.name = name;
+        this.description = description;
+        this.price = price;
+        this.imageURL = image;
+        this.active = active;
+    }
 
     public String getName() {
         return name;
@@ -27,11 +36,11 @@ public class Product {
         this.name = name;
     }
 
-    public double getPrice() {
+    public String getPrice() {
         return price;
     }
 
-    public void setPrice(double price) {
+    public void setPrice(String price) {
         this.price = price;
     }
 
