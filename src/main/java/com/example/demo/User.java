@@ -31,6 +31,9 @@ public class User {
     @Column(name="username")
     private String username;
 
+    @Column(name="position")
+    private String position;
+
     @ManyToMany(fetch = FetchType.EAGER)
     @JoinTable(joinColumns = @JoinColumn(name="user_id"),
             inverseJoinColumns = @JoinColumn(name="role_id"))
@@ -39,16 +42,16 @@ public class User {
     @OneToMany
     Collection<Order> orders;
 
-    public User() {
-    }
+    public User() {}
 
-    public User(String email, String password, String firstName, String lastName, boolean enabled, String username) {
-        this.setEmail(email);
+    public User(String email, String password, String firstName, String lastName, boolean enabled, String username, String position) {
+        this.email = email;
         this.setPassword(password);
-        this.setFirstName(firstName);
-        this.setLastName(lastName);
-        this.setEnabled(enabled);
-        this.setUsername(username);
+        this.firstName = firstName;
+        this.lastName = lastName;
+        this.enabled = enabled;
+        this.username = username;
+        this.position = position;
     }
 
     public long getId() {
@@ -120,4 +123,12 @@ public class User {
     public Collection<Order> getOrders() { return orders; }
 
     public void setOrders(Collection<Order> orders) { this.orders = orders; }
+
+    public String getPosition() {
+        return position;
+    }
+
+    public void setPosition(String position) {
+        this.position = position;
+    }
 }

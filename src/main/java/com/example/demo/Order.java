@@ -5,15 +5,15 @@ import java.util.ArrayList;
 import java.util.Collection;
 
 @Entity
+
 public class Order {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private long orderId;
     private double total_cost;
 
-    @ManyToOne
-    @JoinTable(joinColumns = @JoinColumn (name="order_id"),
-            inverseJoinColumns = @JoinColumn(name="user_id"))
+    @ManyToOne(fetch = FetchType.EAGER)
+    @JoinColumn(name="user_id")
     private User user;
 
     @ManyToMany
@@ -59,8 +59,10 @@ public class Order {
         return Double.toString(total);
     }
 
-    public int productQuantity(){
-        return getProducts().size();
+    public String productQuantity(){
+
+        return Integer.toString(getProducts().size());
+
     }
 
     public String calculateShipping(){

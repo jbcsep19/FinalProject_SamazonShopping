@@ -14,13 +14,13 @@ public class Product {
     private String price;
     private String imageURL;
     private boolean active;
-//    private int quantity;
-    @ManyToMany(mappedBy = "products")
+
+    @ManyToMany
     private Collection<Order> orders;
 
     public Product(){}
 
-    public Product( String name, String description, String price, String image, boolean active){
+    public Product(String name, String description, String price, String image, boolean active){
         this.name = name;
         this.description = description;
         this.price = price;
@@ -52,14 +52,6 @@ public class Product {
         this.active = active;
     }
 
-/*   public static int getQuantity() {
-        return quantity;
-    }
-
-    public static void setQuantity(int quantity) {
-        Product.quantity = quantity;
-    }
-*/
     public long getProductId() { return productId; }
 
     public void setProductId(long productId) { this.productId = productId; }
@@ -78,5 +70,13 @@ public class Product {
 
     public void setOrders(Collection<Order> orders) {
         this.orders = orders;
+    }
+
+    public String getImageURL() {
+        return imageURL;
+    }
+
+    public void setImageURL(String imageURL) {
+        this.imageURL = imageURL;
     }
 }
