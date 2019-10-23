@@ -16,6 +16,8 @@ public class Product {
     private boolean active;
 
     @ManyToMany
+    @JoinTable(joinColumns = @JoinColumn(name="product_id"),
+            inverseJoinColumns = @JoinColumn(name="order_id"))
     private Collection<Order> orders;
 
     public Product(){}

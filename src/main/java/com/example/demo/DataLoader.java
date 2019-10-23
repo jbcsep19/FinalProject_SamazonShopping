@@ -1,6 +1,5 @@
 package com.example.demo;
 
-
 import org.apache.commons.io.IOUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
@@ -14,9 +13,11 @@ import org.springframework.mail.javamail.MimeMessageHelper;
 import javax.mail.MessagingException;
 import javax.mail.internet.MimeMessage;
 import java.io.IOException;
+
 import java.io.File;
 import java.io.FileInputStream;
 import java.util.ArrayList;
+
 import java.util.Arrays;
 import java.util.Scanner;
 
@@ -27,6 +28,9 @@ public class DataLoader implements CommandLineRunner {
 
     @Autowired
     RoleRepository roleRepository;
+
+    @Autowired
+    ProductRepository productRepository;
 
     @Autowired
     private BCryptPasswordEncoder passwordEncoder;
@@ -41,16 +45,18 @@ public class DataLoader implements CommandLineRunner {
         Role adminRole = roleRepository.findByRole("ADMIN");
         Role userRole = roleRepository.findByRole("USER");
 
-        User user = new User("mark@user.com", "password", "Mark", "User", true, "mark", "user");
+        User user = new User("mark@user.com", "password", "Mark", "User",
+                true, "mark", "user");
         user.setRoles(Arrays.asList(userRole));
         userRepository.save(user);
 
-        user = new User("admin@admin.com", "password", "Admin", "User", true, "admin", "administrator");
+        user = new User("admin@admin.com", "password", "Admin", "User",
+                true, "admin", "administrator");
         user.setRoles(Arrays.asList(adminRole));
         userRepository.save(user);
 
 
-       /* System.out.println("Sending Email...");
+        /* System.out.println("Sending Email...");
 
         try {
             sendEmail();
@@ -106,11 +112,6 @@ public class DataLoader implements CommandLineRunner {
         javaMailSender.send(msg);
 
     }*/
-    }
-
-
-    public void loadFromFile(){
-       //File file = new File("\\resources\\ Magneto_Megafood.txt");
 
         try {
             FileInputStream fis = new FileInputStream("src/main/resources/Magneto_Megafood.txt");
@@ -121,6 +122,7 @@ public class DataLoader implements CommandLineRunner {
                 boolean active = Boolean.parseBoolean(product_data[4]);
                 Product product = new Product(product_data[0], product_data[1], product_data[2],
                         product_data[3], active);        //name, description, price, URL, active
+                productRepository.save(product);
             }
         }catch(Exception IOException){
             System.out.println("IO Exception Found");

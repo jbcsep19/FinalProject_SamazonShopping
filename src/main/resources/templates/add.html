@@ -17,9 +17,9 @@
     Price :<input type=”text” th:field=”*{price}” />
     <span th:if=”${#fields.hasErrors(‘price’)}”  
           th:errors=”*{price}”></span><br />
-    urls :<input type=”text” th:field=”*{url}” />
-    <span th:if=”${#fields.hasErrors(‘url’)}”
-          th:errors=”*{url}”></span><br />
+    urls :<input type=”text” th:field=”*{imageURL}” />
+    <span th:if=”${#fields.hasErrors(‘imageURL’)}”
+          th:errors=”*{imageURL}”></span><br />
     Active :<input type=”text” th:field=”*{active}” />
     <span th:if=”${#fields.hasErrors(‘active’)}”  
           th:errors=”*{active}”></span><br />  

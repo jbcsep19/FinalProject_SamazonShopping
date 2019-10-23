@@ -6,17 +6,19 @@ import java.util.Collection;
 
 @Entity
 
+@Table(name="Orders")
 public class Order {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    private long orderId;
+    private long OrderId;
     private double total_cost;
+
 
     @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name="user_id")
     private User user;
 
-    @ManyToMany
+    @ManyToMany (mappedBy = "orders")
     private Collection<Product> products;
 
     public Order(){}
@@ -45,9 +47,9 @@ public class Order {
         this.products = products;
     }
 
-    public long getOrderId() { return orderId; }
+    public long getOrderId() { return OrderId; }
 
-    public void setOrderId(long orderId) { this.orderId = orderId; }
+    public void setOrderId(long orderId) { this.OrderId = orderId; }
 
     public String calculateCost(){
         double total = 0.0;
