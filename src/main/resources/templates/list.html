@@ -6,5 +6,25 @@
 </head>
 <body>
 
+<h1>Product List</h1>
+<a href=”/add”>Add a Product</a><br />
+<table>
+    <tr>
+        <th>Name</th>
+        <th>Description</th>
+        <th>Price</th>
+        <td>Actions</td>
+    </tr>
+    <tr th:each=”Product: ${Product}”>
+        <td th:text=”${Product.name}”></td>
+        <td th:text=”${Product.description}”></td>
+        <td th:text=”${Product.price}”></td>
+        <td>
+            <a th:href=”@{/addtoCart/{id}(id=${Product.id})}”>Add to Cart</a> -
+            <a th:href=”@{/detail/{id}(id=${Product.id})}”>Details</a> -
+            <a th:href=”@{/delete/{id}(id=${Product.id})}”>Delete</a>
+        </td></tr>
+</table>
+
 </body>
 </html>
