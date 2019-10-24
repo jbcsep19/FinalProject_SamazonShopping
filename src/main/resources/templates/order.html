@@ -2,7 +2,7 @@
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
-    <title>Product List</title>
+    <title>Order</title>
     <link rel="stylesheet" type="text/css" th:href="@{/styles.css}">
 </head>
 <body>
@@ -15,10 +15,9 @@
 <div class="customer-info-container">
     <h3>Customer Information:</h3>
     <ul>
-        <li>Name: <span th:utext="${orderInfo.customerName}"></span></li>
-        <li>Email: <span th:utext="${orderInfo.customerEmail}"></span></li>
-        <li>Phone: <span th:utext="${orderInfo.customerPhone}"></span></li>
-        <li>Address: <span th:utext="${orderInfo.customerAddress}"></span></li>
+        <li>First Name: <span th:utext="${User.firstName}"></span></li>
+        <li>Last Name: <span th:utext="${User.lastName}"></span></li>
+        <li>Email: <span th:utext="${User.email}"></span></li>
     </ul>
     <h3>Order Summary:</h3>
     <ul>
