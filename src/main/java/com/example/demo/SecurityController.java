@@ -55,11 +55,11 @@ public class SecurityController {
         // ***** authentication for administrator and user *********
         else {
             userService.saveUser(user);
-//            if ((user.getPosition()).equalsIgnoreCase("administrator")) {
-//                userService.saveAdmin(user);
-//            } else {
-//                userService.saveUser(user);
-//            }
+            if ((user.getPosition()).equalsIgnoreCase("administrator")) {
+                userService.saveAdmin(user);
+            } else {
+                userService.saveUser(user);
+            }
             model.addAttribute("message", "User Account Created");
         }
         return "index";

@@ -12,6 +12,9 @@ public class HomeController {
     ProductRepository productRepository;
 
     @Autowired
+    UserRepository userRepository;
+
+    @Autowired
     UserService userService;
 /*
      @RequestMapping("/")
@@ -83,7 +86,7 @@ public class HomeController {
     @RequestMapping("/detail/{id}")
     public String showJob(@PathVariable("id") long id, Model model) {
         model.addAttribute("product", productRepository.findById(id).get());
-        return "showdetail";
+        return "productDetails";
     }
 
     @RequestMapping("/update/{id}")
@@ -96,5 +99,11 @@ public class HomeController {
     public String deleteJob(@PathVariable("id")long id) {
         productRepository.deleteById(id);
         return "redirect:/list";
+    }
+
+    @RequestMapping("/userlist")
+    public String userlist(Model model) {
+        model.addAttribute("users", userRepository.findAll());
+        return "userList";
     }
 }
