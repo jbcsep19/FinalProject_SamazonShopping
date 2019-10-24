@@ -36,13 +36,13 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
         http.authorizeRequests()
                 .antMatchers("/", "/h2-console/**", "/register", "/css/**", "/javascript/**").permitAll()
 
-                .antMatchers("/admin","/add")
+                .antMatchers("/admin","/add", "/userlist")
                 .access("hasAuthority('ADMIN')")
 
                 .antMatchers("/user")
                 .access("hasAuthority('USER')")
 
-                .antMatchers("/info")
+                .antMatchers("/info", "/list", "/cart", "/productDetails", "/userlist")
                 .access("hasAnyAuthority('ADMIN','USER')")
 
                 .anyRequest().authenticated()

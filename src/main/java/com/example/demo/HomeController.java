@@ -15,6 +15,9 @@ public class HomeController {
     ProductRepository productRepository;
 
     @Autowired
+    UserRepository userRepository;
+
+    @Autowired
     UserService userService;
 /*
      @RequestMapping("/")
@@ -77,7 +80,7 @@ public class HomeController {
             model.addAttribute("products", productRepository.findByNameContainingIgnoreCase(search));
         }
         else if(category.equals("2")){
-            model.addAttribute("jobs", productRepository.findByDescriptionContainingIgnoreCase(search));
+            model.addAttribute("products", productRepository.findByDescriptionContainingIgnoreCase(search));
         }
         return "searchlist";
     }
@@ -89,14 +92,31 @@ public class HomeController {
     }
 
     @RequestMapping("/update/{id}")
-    public String updateJob(@PathVariable("id") long id, Model model) {
+    public String updateProduct(@PathVariable("id") long id, Model model) {
         model.addAttribute("product", productRepository.findById(id).get());
+<<<<<<< HEAD
         return "productform";
+=======
+        return "add";
     }
+
+    @RequestMapping("/updateUser/{id}")
+    public String updateUser(@PathVariable("id") long id, Model model) {
+        model.addAttribute("user", userRepository.findById(id).get());
+        return "registration";
+>>>>>>> c604dc4aa7ce658d2004f61574a6967b388d8fb2
+    }
+
 
     @RequestMapping("/delete/{id}")
     public String deleteJob(@PathVariable("id")long id) {
         productRepository.deleteById(id);
         return "redirect:/list";
+    }
+
+    @RequestMapping("/userlist")
+    public String userlist(Model model) {
+        model.addAttribute("users", userRepository.findAll());
+        return "userList";
     }
 }

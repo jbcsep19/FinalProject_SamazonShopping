@@ -10,6 +10,7 @@
 </head>
 <body>
 
+<<<<<<< HEAD
 <!--Navbar-->
 <div th:insert="base :: navbar"></div>
 <br/>
@@ -73,6 +74,27 @@
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
         integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
         crossorigin="anonymous"></script>
+=======
+<h1>Product List</h1>
+<a href="/add">Add a Product</a><br />
+<table>
+    <tr>
+        <th>Name</th>
+        <th>Description</th>
+        <th>Price</th>
+        <td>Actions</td>
+    </tr>
+    <tr th:each="product: ${products}">
+        <td th:text="${product.name}"></td>
+        <td th:text="${product.description}"></td>
+        <td th:text="${product.price}"></td>
+        <td>
+            <a th:href="@{/addtoCart/{id}(id=${product.productId})}">Add to Cart</a> -
+            <a th:href="@{/detail/{id}(id=${product.productId})}">Details</a> -
+            <a th:href="@{/delete/{id}(id=${product.productId})}">Delete</a>
+        </td></tr>
+</table>
+>>>>>>> c604dc4aa7ce658d2004f61574a6967b388d8fb2
 
 </body>
 </html>

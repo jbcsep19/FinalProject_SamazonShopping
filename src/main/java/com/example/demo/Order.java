@@ -62,9 +62,7 @@ public class Order {
     }
 
     public String productQuantity(){
-
         return Integer.toString(getProducts().size());
-
     }
 
     public String calculateShipping(){
