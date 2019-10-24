@@ -19,6 +19,7 @@
         <td th:text="${product.name}"></td>
         <td th:text="${product.description}"></td>
         <td th:text="${product.price}"></td>
+        <td th:text="${product.imageURL}"></td>
         <td>
             <a th:href="@{/addtoCart/{id}(id=${product.productId})}">Add to Cart</a> -
             <a th:href="@{/detail/{id}(id=${product.productId})}">Details</a> -

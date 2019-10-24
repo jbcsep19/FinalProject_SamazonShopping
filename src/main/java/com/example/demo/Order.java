@@ -85,5 +85,9 @@ public class Order {
         return Double.toString(shipping + productCost);
     }
 
+    public void checkout(){
+
+    }
+
 
 }
