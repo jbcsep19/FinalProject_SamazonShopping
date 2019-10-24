@@ -43,22 +43,22 @@ public class SecurityController {
     @GetMapping("/register")
     public String showRegistrationPage(Model model) {
         model.addAttribute("user", new User());
-        return "xregistration";
+        return "registration";
     }
 
     @PostMapping("/register")
     public String processRegistrationPage(@Valid @ModelAttribute("user") User user, BindingResult result, Model model) {
         model.addAttribute("user", user);
         if (result.hasErrors()) {
-            return "xregistration";
+            return "registration";
         }
         // ***** authentication for administrator and user *********
         else {
-<<<<<<< HEAD
+
 //            userService.saveUser(user);
-=======
+
             userService.saveUser(user);
->>>>>>> c604dc4aa7ce658d2004f61574a6967b388d8fb2
+
             if ((user.getPosition()).equalsIgnoreCase("administrator")) {
                 userService.saveAdmin(user);
             } else {
