@@ -43,14 +43,14 @@ public class SecurityController {
     @GetMapping("/register")
     public String showRegistrationPage(Model model) {
         model.addAttribute("user", new User());
-        return "registration";
+        return "xregistration";
     }
 
     @PostMapping("/register")
     public String processRegistrationPage(@Valid @ModelAttribute("user") User user, BindingResult result, Model model) {
         model.addAttribute("user", user);
         if (result.hasErrors()) {
-            return "registration";
+            return "xregistration";
         }
         // ***** authentication for administrator and user *********
         else {

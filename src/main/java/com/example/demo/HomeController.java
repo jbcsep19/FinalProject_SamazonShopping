@@ -98,7 +98,7 @@ public class HomeController {
     @RequestMapping("/updateUser/{id}")
     public String updateUser(@PathVariable("id") long id, Model model) {
         model.addAttribute("user", userRepository.findById(id).get());
-        return "registration";
+        return "xregistration";
     }
 
 
