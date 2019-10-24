@@ -11,8 +11,8 @@ public class Order {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private long OrderId;
-    private double total_cost;
-
+//    private double total_cost;
+    private String orderStatus;
 
     @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name="user_id")
@@ -23,13 +23,20 @@ public class Order {
 
     public Order(){}
 
-    public double getTotal_cost() {
+    public Order( String orderStatus, User user, Collection<Product> products) {
+
+        this.orderStatus = orderStatus;
+        this.user = user;
+        this.products = products;
+    }
+
+    /*public double getTotal_cost() {
         return total_cost;
     }
 
     public void setTotal_cost(double total_cost) {
         this.total_cost = total_cost;
-    }
+    }*/
 
     public User getUser() {
         return user;
@@ -50,6 +57,14 @@ public class Order {
     public long getOrderId() { return OrderId; }
 
     public void setOrderId(long orderId) { this.OrderId = orderId; }
+
+    public String getOrderStatus() {
+        return orderStatus;
+    }
+
+    public void setOrderStatus(String orderStatus) {
+        this.orderStatus = orderStatus;
+    }
 
     public String calculateCost(){
         double total = 0.0;

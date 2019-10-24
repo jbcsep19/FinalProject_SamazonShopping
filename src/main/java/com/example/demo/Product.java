@@ -18,7 +18,7 @@ public class Product {
     @ManyToMany
     @JoinTable(joinColumns = @JoinColumn(name="product_id"),
             inverseJoinColumns = @JoinColumn(name="order_id"))
-    private Collection<Order> orders;
+    private   Collection<Order> orders;
 
 
     @ManyToOne (fetch = FetchType.EAGER)
@@ -81,6 +81,10 @@ public class Product {
 
     public void setOrders(Collection<Order> orders) {
         this.orders = orders;
+    }
+
+    public void addOrder(Order order){
+        this.orders.add(order);
     }
 
     public String getImageURL() {

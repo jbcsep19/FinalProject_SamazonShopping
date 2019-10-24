@@ -6,7 +6,9 @@ import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 
+import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Collection;
 
 @Service
 public class UserService {
@@ -58,5 +60,39 @@ public class UserService {
         return user;
     }
 
+    public Collection<Order> getUserOrders(){
+        Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+        String currentusername = authentication.getName();
+        User user = userRepository.findByUsername(currentusername);
+        Collection<Order> tempUserOrders = user.getOrders();
+
+        return tempUserOrders;
+    }
+
+//    public Collection<Product> getUserOrderProducts() {
+//        Collection<Order> tempUserOrders = getUserOrders();
+//        Collection<Product> tempOrderProducts = new ArrayList<>();
+//        ArrayList<String> tempProductNames = new ArrayList<>();
+//        for (Order order : tempUserOrders) {
+//
+//            for (Product tempProduct : order.getProducts()) {
+//                tempOrderProducts.add(tempProduct.getName());
+//            }
+//        }
+//    }
+
+
+    public ArrayList<String> getUserOrderProductsNames() {
+        Collection<Order> tempUserOrders = getUserOrders();
+        Collection<Product> tempOrderProducts = new ArrayList<>();
+        ArrayList<String> tempProductNames = new ArrayList<>();
+        for (Order order : tempUserOrders) {
+
+            for (Product tempProduct : order.getProducts()) {
+                tempProductNames.add(tempProduct.getName());
+            }
+        }
+        return tempProductNames;
+    }
 
 }
