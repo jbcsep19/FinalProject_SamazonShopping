@@ -15,14 +15,14 @@
         <th>Price</th>
         <td>Actions</td>
     </tr>
-    <tr th:each=”Product: ${Product}”>
-        <td th:text=”${Product.name}”></td>
-        <td th:text=”${Product.description}”></td>
-        <td th:text=”${Product.price}”></td>
+    <tr th:each=”product: ${products}”>
+        <td th:text=”${product.name}”></td>
+        <td th:text=”${product.description}”></td>
+        <td th:text=”${product.price}”></td>
         <td>
-            <a th:href=”@{/addtoCart/{id}(id=${Product.id})}”>Add to Cart</a> -
-            <a th:href=”@{/detail/{id}(id=${Product.id})}”>Details</a> -
-            <a th:href=”@{/delete/{id}(id=${Product.id})}”>Delete</a>
+            <a th:href=”@{/addtoCart/{id}(id=${product.id})}”>Add to Cart</a> -
+            <a th:href=”@{/detail/{id}(id=${product.id})}”>Details</a> -
+            <a th:href=”@{/delete/{id}(id=${product.id})}”>Delete</a>
         </td></tr>
 </table>
 

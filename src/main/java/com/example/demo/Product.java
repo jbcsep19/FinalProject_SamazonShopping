@@ -20,6 +20,9 @@ public class Product {
             inverseJoinColumns = @JoinColumn(name="order_id"))
     private Collection<Order> orders;
 
+    @ManyToMany
+    private Collection<WishList> wishLists;
+
     public Product(){}
 
     public Product(String name, String description, String price, String image, boolean active){
