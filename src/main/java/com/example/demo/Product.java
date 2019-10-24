@@ -20,6 +20,10 @@ public class Product {
             inverseJoinColumns = @JoinColumn(name="order_id"))
     private Collection<Order> orders;
 
+    @ManyToOne (fetch = FetchType.EAGER)
+    @JoinColumn(name = "user_id")
+    private User user;
+
     public Product(){}
 
     public Product(String name, String description, String price, String image, boolean active){
@@ -80,5 +84,25 @@ public class Product {
 
     public void setImageURL(String imageURL) {
         this.imageURL = imageURL;
+    }
+
+    public User getUser() {
+        return user;
+    }
+
+    public void setUser(User user) {
+        this.user = user;
+    }
+
+    @Override
+    public String toString() {
+        return "Product{" +
+                "productId=" + productId +
+                ", name='" + name + '\'' +
+                ", description='" + description + '\'' +
+                ", price='" + price + '\'' +
+                ", imageURL='" + imageURL + '\'' +
+                ", active=" + active +
+                '}';
     }
 }

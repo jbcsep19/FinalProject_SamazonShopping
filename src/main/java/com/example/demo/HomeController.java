@@ -3,7 +3,10 @@ package com.example.demo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
+
+import javax.validation.Valid;
 
 @Controller
 public class HomeController {
@@ -56,16 +59,15 @@ public class HomeController {
     }*/
 
 
-    /*@PostMapping("/process")
-    public String processForm(@Valid MyProduct product, BindingResult result){
+    @PostMapping("/processproduct")
+    public String processForm(@Valid Product product, BindingResult result){
        if(result.hasErrors()){
            return "productform";
         }
-
         product.setUser(userService.getUser());
         productRepository.save(product);
        return "redirect:/list";
-    }*/
+    }
 
     @PostMapping("/processsearch")
     public String searchResult(Model model, @RequestParam(name = "search") String search,
@@ -83,13 +85,13 @@ public class HomeController {
     @RequestMapping("/detail/{id}")
     public String showJob(@PathVariable("id") long id, Model model) {
         model.addAttribute("product", productRepository.findById(id).get());
-        return "showdetail";
+        return "productDetails";
     }
 
     @RequestMapping("/update/{id}")
     public String updateJob(@PathVariable("id") long id, Model model) {
         model.addAttribute("product", productRepository.findById(id).get());
-        return "jobform";
+        return "productform";
     }
 
     @RequestMapping("/delete/{id}")
