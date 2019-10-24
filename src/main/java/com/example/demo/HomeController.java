@@ -29,6 +29,7 @@ public class HomeController {
     public String productList(Model model){
         model.addAttribute("products", productRepository.findAll());
 //        model.addAttribute("user",userService.getUser());
+
         if(userService.getUser() != null) {
             model.addAttribute("user_id", userService.getUser().getId());
         }
@@ -40,7 +41,7 @@ public class HomeController {
     @RequestMapping("/add")
     public String addProduct(Model model){
         model.addAttribute("product", new Product());
-        return "productform";
+        return "add";
     }
 
     /*@PostMapping("/processjob")
@@ -108,9 +109,8 @@ public class HomeController {
 
     }
 
-
     @RequestMapping("/delete/{id}")
-    public String deleteJob(@PathVariable("id")long id) {
+    public String deleteProduct(@PathVariable("id")long id) {
         productRepository.deleteById(id);
         return "redirect:/list";
     }

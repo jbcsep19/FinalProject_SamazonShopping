@@ -11,27 +11,6 @@
 <body>
 <!--Navbar-->
 <div th:insert="base :: navbar"></div>
-<br><br><br>
-
-
-<table>
-    <tr>
-        <th>Name</th>
-        <th>Price</th>
-        <th>Description</th>
-        <th>image</th>
-    </tr>
-    <tr><b>
-        <td th:text="${product.name}"></td>
-        <td th:text="${product.price}"></td>
-        <td th:text="${product.description}"></td>
-        <td th:text="${product.imageURL}"></td>
-        <!--           <td><a th:href="@{/addToCart/{productId}(id=${product.productId})}">Add to Cart</a>&nbsp
-                       <a th:href="@{/addToWishList/{productId}(id=${product.productId})}">Add to wish list</a>
-
-<<<<<<< HEAD
-<!--Navbar-->
-<div th:insert="base :: navbar"></div>
 <br>
 
 <div class="container">
@@ -48,7 +27,7 @@
             Description: <span th:text="${product.description}"></span><br>
 <!--            Posted Date: <span th:text="${#dates.format(job.date, 'MM-dd-yyyy')}"></span><br>-->
             Price: <span th:text="${product.price}"></span><br>
-            Image URL: <span th:text="${product.imageURL}"></span><br>
+            Image: <span><img th:src="${product.imageURL}" width="100px" hight="100px" alt="product-image"></span><br>
             Active: <span th:text="${product.active}"></span><br>
 
         </div>
@@ -56,26 +35,13 @@
 </div>
 
 <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
-<!--Footer-->
-<div th:insert="base :: footer"></div>
 
-=======
-                   </td> -->
-
-    </b>
-    </tr>
-</table>
-<<<<<<< HEAD
-<br><br><br><br><br><br><br><br><br><br><br>
 <!--Footer-->
 <div th:insert="base :: footer"></div>
 
 </body>
 
-=======
->>>>>>> c604dc4aa7ce658d2004f61574a6967b388d8fb2
-</body>
->>>>>>> ec775e90e7e0d87679f25e4c99121e3af4d80171
+
 <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
         integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
         crossorigin="anonymous"></script>
