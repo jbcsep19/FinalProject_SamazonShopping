@@ -6,13 +6,13 @@
 </head>
 <body>
  
-<a href=”/”>Show All Orders</a><br />
-Order Number :<span th:text=”${order.name}” ></span><br />  
-# of Items in Order :<span th:text=”${order.numItemsInOrder}” ></span><br />  
-Order Subtotal :<p th:text=”${order.orderSubtotal}” ></p>  
-Order Shipping :<span th:text=”${order.orderShipping}” ></span><br />
-Order Total :<span th:text=”${order.orderTotal}” ></span><br />
-<a th:href=”@{/delete/{id}(id=${order.id})}”>Delete this Order</a>
+<a href="/">Show All Orders</a><br />
+Order Number :<span th:text="${order.name}" ></span><br />
+# of Items in Order :<span th:text="${order.numItemsInOrder}" ></span><br />  
+Order Subtotal :<p th:text="${order.orderSubtotal}" ></p>  
+Order Shipping :<span th:text="${order.orderShipping}" ></span><br />
+Order Total :<span th:text="${order.orderTotal}" ></span><br />
+<a th:href="@{/delete/{id}(id=${order.id})}">Delete this Order</a>
 
 
 </body>
