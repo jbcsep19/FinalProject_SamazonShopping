@@ -10,7 +10,7 @@
 </head>
 <body>
 
-<<<<<<< HEAD
+
 <!--Navbar-->
 <div th:insert="base :: navbar"></div>
 <br/>
@@ -42,7 +42,8 @@
                     <td th:text="${product.name}"></td>
                     <td th:text="${product.description}"></td>
                     <td th:text="${product.price}"></td>
-                    <td th:text="${product.imageURL}"></td>
+<!--                    <td th:text="${product.imageURL}"></td>-->
+                    <td img src="${product.imageURL}" alt=" " class="card-img-top" ></td>
                     <td th:text="${product.active}"></td>
                     <td>
 
@@ -52,6 +53,7 @@
                         </div>
 
                         <a th:href="@{/detail/{id}(id=${product.productId})}" type="button" class="btn btn-outline-success">Details</a>
+                        <a th:href="@{/addtoCart/{id}(id=${product.productId})}" type="button" class="btn btn-outline-success">Add to Cart</a> -
                     </td>
                 </tr>
                 </tbody>
@@ -74,7 +76,8 @@
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
         integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
         crossorigin="anonymous"></script>
-=======
+
+<!--
 <h1>Product List</h1>
 <a href="/add">Add a Product</a><br />
 <table>
@@ -94,7 +97,7 @@
             <a th:href="@{/delete/{id}(id=${product.productId})}">Delete</a>
         </td></tr>
 </table>
->>>>>>> c604dc4aa7ce658d2004f61574a6967b388d8fb2
+
 
 </body>
-</html>
+</html>-->

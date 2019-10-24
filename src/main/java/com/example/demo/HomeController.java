@@ -94,17 +94,16 @@ public class HomeController {
     @RequestMapping("/update/{id}")
     public String updateProduct(@PathVariable("id") long id, Model model) {
         model.addAttribute("product", productRepository.findById(id).get());
-<<<<<<< HEAD
+
         return "productform";
-=======
-        return "add";
+
+//        return "add";
     }
 
     @RequestMapping("/updateUser/{id}")
     public String updateUser(@PathVariable("id") long id, Model model) {
         model.addAttribute("user", userRepository.findById(id).get());
         return "registration";
->>>>>>> c604dc4aa7ce658d2004f61574a6967b388d8fb2
     }
 
 
