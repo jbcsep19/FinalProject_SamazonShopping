@@ -78,7 +78,7 @@ public class HomeController {
             model.addAttribute("products", productRepository.findByNameContainingIgnoreCase(search));
         }
         else if(category.equals("2")){
-            model.addAttribute("jobs", productRepository.findByDescriptionContainingIgnoreCase(search));
+            model.addAttribute("products", productRepository.findByDescriptionContainingIgnoreCase(search));
         }
         return "searchlist";
     }
@@ -90,10 +90,17 @@ public class HomeController {
     }
 
     @RequestMapping("/update/{id}")
-    public String updateJob(@PathVariable("id") long id, Model model) {
+    public String updateProduct(@PathVariable("id") long id, Model model) {
         model.addAttribute("product", productRepository.findById(id).get());
-        return "jobform";
+        return "add";
     }
+
+    @RequestMapping("/updateUser/{id}")
+    public String updateUser(@PathVariable("id") long id, Model model) {
+        model.addAttribute("user", userRepository.findById(id).get());
+        return "registration";
+    }
+
 
     @RequestMapping("/delete/{id}")
     public String deleteJob(@PathVariable("id")long id) {
