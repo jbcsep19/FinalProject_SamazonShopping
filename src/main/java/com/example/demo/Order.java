@@ -25,14 +25,14 @@ public class Order {
 
     public Order(){}
 
-    public double getTotal_cost() {
+ /*   public double getTotal_cost() {
         return total_cost;
     }
 
     public void setTotal_cost(double total_cost) {
         this.total_cost = total_cost;
     }
-
+*/
     public User getUser() {
         return user;
     }
