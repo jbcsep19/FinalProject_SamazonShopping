@@ -29,6 +29,7 @@ public class HomeController {
     public String productList(Model model){
         model.addAttribute("products", productRepository.findAll());
 //        model.addAttribute("user",userService.getUser());
+
         if(userService.getUser() != null) {
             model.addAttribute("user_id", userService.getUser().getId());
         }

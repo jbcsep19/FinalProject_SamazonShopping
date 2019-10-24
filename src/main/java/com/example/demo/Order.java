@@ -11,7 +11,9 @@ public class Order {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private long OrderId;
-    private double total_cost;
+    //private double total_cost;
+
+    private String orderStatus;
 
 
     @ManyToOne(fetch = FetchType.EAGER)
@@ -90,4 +92,11 @@ public class Order {
     }
 
 
+    public String getOrderStatus() {
+        return orderStatus;
+    }
+
+    public void setOrderStatus(String orderStatus) {
+        this.orderStatus = orderStatus;
+    }
 }

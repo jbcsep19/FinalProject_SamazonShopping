@@ -21,7 +21,6 @@ public class SecurityController {
     @Autowired
     UserRepository userRepository;
 
-
     @RequestMapping("/")
     public String index() {
         return "index";
@@ -54,8 +53,6 @@ public class SecurityController {
         }
         // ***** authentication for administrator and user *********
         else {
-
-//            userService.saveUser(user);
 
             userService.saveUser(user);
 
