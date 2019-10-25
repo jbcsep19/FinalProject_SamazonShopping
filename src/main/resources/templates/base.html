@@ -41,7 +41,7 @@
 
 </head>
 <body>
-
+<div th:fragment="navbar">
 <div class="py-1 bg-primary">
     <div class="container">
         <div class="row no-gutters d-flex align-items-start align-items-center px-md-0">
@@ -64,7 +64,7 @@
     </div>
 </div>
 
-<div th:fragment="navbar">
+
     <nav class="navbar navbar-expand-lg navbar-light "style="background-color: beige" th:fragment="main-navbar" >
         <a class="navbar-brand text-green"  href="/">Magneto Megafood SAmaZon</a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup"
@@ -95,7 +95,7 @@
                     <a class="nav-link dropdown-toggle" href="#" id="dropdown04" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Shop</a>
                     <div class="dropdown-menu" aria-labelledby="dropdown04">
                         <a class="dropdown-item" href="product.html">Products</a>
-                        <a class="dropdown-item" href="productDetails.html">Products Details</a>
+                        <a class="dropdown-item" href="list.html">Products List</a>
                         <a class="dropdown-item" href="wishlist.html">Wishlist</a>
                         <a class="dropdown-item" href="cart.html">Cart</a>
                         <a class="dropdown-item" href="order.html">Order</a>
@@ -139,6 +139,35 @@
         integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
 <<<<<<< HEAD
         crossorigin="anonymous"></script>-->
+
+
+<div th:fragment="footer">
+    <div class="alert alert" style="background-color: lawngreen" role="alert">
+        <div class="row justify-content-rt-center">
+            <div class="col" style="color: white">
+                &copy;2019
+            </div>
+            <div class="col">
+                <!--Facebook-->
+                <button type="button" class="btn btn-fb text-white" onClick="parent.location='https://www.facebook.com/MegaFoodFans/'">
+                    <i class="fab fa-facebook-f pr-1 text-white"></i> Facebook</button>
+                <!--Twitter-->
+                <button type="button" class="btn btn-tw text-white" onClick="parent.location='https://twitter.com/MegaFood'">
+                    <i class="fab fa-twitter pr-1 text-white" ></i> Twitter</button>
+                <!--Linkedin-->
+                <button type="button" class="btn btn-li text-white" onClick="parent.location='https://www.linkedin.com/company/mega-food/'">
+                    <i class="fab fa-linkedin-in pr-1 text-white"></i> Linkedin</button>
+                <!--Instagram-->
+                <button type="button" class="btn btn-ins text-white" onClick="parent.location='https://www.instagram.com/megafood/?hl=en'">
+                    <i class="fab fa-instagram pr-1 text-white"></i> Instagram</button>
+                <!--Pinterest-->
+                <button type="button" class="btn btn-pin text-white" onClick="parent.location='https://www.pinterest.com/megafood/'">
+                    <i class="fab fa-pinterest pr-1 text-white"></i> Pinterest</button>
+            </div>
+        </div>
+        <p style="color: white">Smile</p>
+    </div>
+</div>
 <section class="ftco-section bg-light">
     <div class="container">
         <div class="row no-gutters ftco-services">
