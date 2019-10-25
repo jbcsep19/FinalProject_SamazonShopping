@@ -82,7 +82,7 @@ public class UserService {
 //        }
 //        return "getUserOrderProductsNames - Finished";
 //    }
-    public Collection<Product> getUserOrderProducts(){
+    /*public Collection<Product> getUserOrderProducts(){
         Collection<Order> userOrders = getUserOrders();
         for (Order order : userOrders){
             if(order.getOrderStatus().equalsIgnoreCase("current")){
@@ -90,7 +90,7 @@ public class UserService {
             }
         }
         return null;
-    }
+    }*/
 
 
 

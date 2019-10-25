@@ -59,6 +59,7 @@ public class User {
         this.position = position;
     }
 
+
     public long getId() {
         return id;
     }

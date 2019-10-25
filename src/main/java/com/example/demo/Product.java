@@ -15,10 +15,13 @@ public class Product {
     private String imageURL;
     private boolean active;
 
-    @ManyToMany
-    @JoinTable(joinColumns = @JoinColumn(name="product_id"),
-            inverseJoinColumns = @JoinColumn(name="order_id"))
-    private Collection<Order> orders;
+
+
+    @ManyToOne (fetch = FetchType.EAGER)
+    @JoinColumn(name ="order_id")
+   /* @JoinTable(joinColumns = @JoinColumn(name="product_id"),
+            inverseJoinColumns = @JoinColumn(name="order_id"))*/
+    private Order order;
 
 
     @ManyToOne (fetch = FetchType.EAGER)
@@ -41,6 +44,7 @@ public class Product {
         this.imageURL = image;
         this.active = active;
     }
+
 
     public String getName() {
         return name;
@@ -78,17 +82,33 @@ public class Product {
         this.description = description;
     }
 
-    public Collection<Order> getOrders() {
-        return orders;
+    public Order getOrder() {
+        return order;
     }
 
-    public void setOrders(Collection<Order> orders) {
-        this.orders = orders;
+    public void setOrder(Order order) {
+        this.order = order;
     }
 
-    public void addOrder(Order order){
-        this.orders.add(order);
+    public Collection<User> getUsers() {
+        return users;
     }
+
+    public void setUsers(Collection<User> users) {
+        this.users = users;
+    }
+
+    public Collection<WishList> getWishLists() {
+        return wishLists;
+    }
+
+    public void setWishLists(Collection<WishList> wishLists) {
+        this.wishLists = wishLists;
+    }
+
+    //public void addOrder(Order order){
+//        this.orders.add(order);
+//    }
 
     public String getImageURL() {
         return imageURL;

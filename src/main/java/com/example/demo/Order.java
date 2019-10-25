@@ -13,31 +13,32 @@ public class Order {
     private long OrderId;
     //private double total_cost;
 
-    private String orderStatus;
+    private boolean orderStatus;
 
 
     @ManyToOne(fetch = FetchType.EAGER)
-    @JoinColumn(name="user_id")
+    @JoinColumn(name = "user_id")
     private User user;
 
-    @ManyToMany (mappedBy = "orders")
+    @OneToMany(mappedBy = "order", cascade=CascadeType.ALL)
     private Collection<Product> products;
 
-    public Order(Collection<Product> products, String orderStatus){
-        this.products = products;
+
+    public Order() {
+    }
+
+    public Order(boolean orderStatus) {
         this.orderStatus = orderStatus;
     }
 
-    public Order(){}
+    /*   public double getTotal_cost() {
+            return total_cost;
+        }
 
- /*   public double getTotal_cost() {
-        return total_cost;
-    }
-
-    public void setTotal_cost(double total_cost) {
-        this.total_cost = total_cost;
-    }
-*/
+        public void setTotal_cost(double total_cost) {
+            this.total_cost = total_cost;
+        }
+    */
     public User getUser() {
         return user;
     }
@@ -54,54 +55,59 @@ public class Order {
         this.products = products;
     }
 
-    public long getOrderId() { return OrderId; }
+    public long getOrderId() {
+        return OrderId;
+    }
 
-    public void setOrderId(long orderId) { this.OrderId = orderId; }
+    public void setOrderId(long orderId) {
+        this.OrderId = orderId;
+    }
 
-    public String calculateCost(){
+
+    public String calculateCost(Collection<Product> products) {
         double total = 0.0;
-        ArrayList<Product> products = new ArrayList<>(getProducts());
-        for (Product prod : products){
+//        ArrayList<Product> products = new ArrayList<>(getProducts());
+        for (Product prod : products) {
             double price = Double.parseDouble(prod.getPrice());
             total += price;
         }
         return Double.toString(total);
     }
 
-    public String productQuantity(){
+    public String productQuantity() {
         return Integer.toString(getProducts().size());
     }
 
-    public String calculateShipping(){
-        String costString = calculateCost();
+    public String calculateShipping(Collection<Product> products) {
+        String costString = calculateCost( products);
         double cost = (Double.valueOf(costString)).doubleValue();
         double shippingCost = 0.0;
-        if(cost < 50){
-            shippingCost =  (cost * .05);
+        if (cost < 50) {
+            shippingCost = (cost * .05);
             return Double.toString(shippingCost);
         }
         return Double.toString(shippingCost);
     }
 
-    public String costPlusShipping(){
-       String shippingString = calculateShipping();
+    public String costPlusShipping(Collection<Product> products) {
+        String shippingString = calculateShipping(products);
         double shipping = (Double.valueOf(shippingString)).doubleValue();
-        String productString = calculateCost();
+        String productString = calculateCost(products);
         double productCost = (Double.valueOf(productString)).doubleValue();
 
         return Double.toString(shipping + productCost);
     }
 
-    public void checkout(){
+    public void checkout() {
 
     }
 
-
-    public String getOrderStatus() {
+    public boolean isOrderStatus() {
         return orderStatus;
     }
 
-    public void setOrderStatus(String orderStatus) {
+    public void setOrderStatus(boolean orderStatus) {
         this.orderStatus = orderStatus;
     }
 }
+

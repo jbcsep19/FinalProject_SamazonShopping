@@ -43,21 +43,40 @@ return "productform";
         product = productRepository.findById(id).get();
         User user = userService.getUser();
         product.setUser(user);
+        Collection<Product> products;
         System.out.println("Cart User: "+ user.getUsername());
 
         Collection<Order> orders =user.getOrders();
+        Order order1;
         if( orders.isEmpty() ) {
+
             System.out.println("Cart is Empty.");
-            Collection<Product> products = new ArrayList<>(); // making an order
-            products.add(product);
-            System.out.println("Product "+ product.getName()+" added to new collection products for user "+ product.getUser().getUsername());
-            Order order1 = new Order(products, "current");
-            orderRepository.save(order1);
+            order1 = new Order();
             orders.add(order1);
-            Product product1=productRepository.findById(id).get();
+            order1.setUser(user);
+
+            products = new ArrayList<>(); // making an order
+            products.add(product);
+            product.setOrder(order1);
+            System.out.println("Product " + product.getName() + " added to new collection products for user " + product.getUser().getUsername());
+
+
+//            productRepository.save(product);
+
+            orderRepository.save(order1);
+
+        }else{
+           /* products = userService.getUserOrderProducts();
+            products.add(product);*/
+            order1 = orderRepository.findByOrderStatus(false);
+            product.setOrder(order1);
+            orderRepository.save(order1);
+
+        }
+//            Product product1=productRepository.findById(id).get();
 // product1.setOrders(order1);
-            product1.addOrder(order1);
-            productRepository.save(product1);
+//            product1.addOrder(order1);
+//            productRepository.save(product1);
 
 //            System.out.println(productRepository.findById(id).get());
 //            model.addAttribute("product",productRepository.findById(id).get());
@@ -67,7 +86,7 @@ return "productform";
 //            System.out.println(userService.getUserOrderProductsNames());
 //            System.out.println( userService.getUser());
 
-        }
+
 //        model.addAttribute("product", productRepository.findById(id).get());
 ////model.addAttribute("productnames", userService.getUserOrderProductsNames());
 //        System.out.println(userService.getUserOrderProductsNames());
@@ -75,8 +94,15 @@ return "productform";
 //        System.out.println( userService.getUser());
 //        model.addAttribute("products", productRepository.findAll());
 
-        model.addAttribute("products", userService.getUserOrderProducts());
+        model.addAttribute("products", order1.getProducts());
 
         return "tempCart";
     }
+
+
+//    For checkout
+
+
+    // display total price
+
 }
