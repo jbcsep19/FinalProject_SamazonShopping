@@ -34,7 +34,7 @@ public class HomeController {
     @RequestMapping("/add")
     public String addProduct(Model model){
         model.addAttribute("product", new Product());
-        return "productform";
+        return "add";
     }
 
     /*@PostMapping("/processjob")
@@ -83,13 +83,14 @@ public class HomeController {
     @RequestMapping("/detail/{id}")
     public String showJob(@PathVariable("id") long id, Model model) {
         model.addAttribute("product", productRepository.findById(id).get());
-        return "showdetail";
+        User user = userService.getUser();
+        return "productDetails";
     }
 
     @RequestMapping("/update/{id}")
     public String updateJob(@PathVariable("id") long id, Model model) {
         model.addAttribute("product", productRepository.findById(id).get());
-        return "jobform";
+        return "registration";
     }
 
     @RequestMapping("/delete/{id}")

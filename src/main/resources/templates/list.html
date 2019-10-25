@@ -5,9 +5,9 @@
     <title>Title</title>
 </head>
 <body>
-
+<a href="index.html">Home</a>
 <h1>Product List</h1>
-<a href=”/add”>Add a Product</a><br />
+<a href="/add">Add a Product</a><br />
 <table>
     <tr>
         <th>Name</th>
@@ -15,14 +15,14 @@
         <th>Price</th>
         <td>Actions</td>
     </tr>
-    <tr th:each=”product: ${products}”>
-        <td th:text=”${product.name}”></td>
-        <td th:text=”${product.description}”></td>
-        <td th:text=”${product.price}”></td>
+    <tr th:each="product: ${products}">
+        <td th:text="${product.name}"></td>
+        <td th:text="${product.description}"></td>
+        <td th:text="${product.price}"></td>
         <td>
-            <a th:href=”@{/addtoCart/{id}(id=${product.id})}”>Add to Cart</a> -
-            <a th:href=”@{/detail/{id}(id=${product.id})}”>Details</a> -
-            <a th:href=”@{/delete/{id}(id=${product.id})}”>Delete</a>
+            <a th:href="@{/addtoCart/{id}(id=${product.productId})}">Add to Cart</a> -
+            <a th:href="@{/detail/{id}(id=${product.productId})}">Details</a> -
+            <a th:href="@{/delete/{id}(id=${product.productId})}">Delete</a>
         </td></tr>
 </table>
 

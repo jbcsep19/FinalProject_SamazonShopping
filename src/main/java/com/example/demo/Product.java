@@ -21,6 +21,9 @@ public class Product {
     private Collection<Order> orders;
 
     @ManyToMany
+    private Collection<User> users;
+
+    @ManyToMany
     private Collection<WishList> wishLists;
 
     public Product(){}

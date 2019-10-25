@@ -5,6 +5,27 @@
     <title>Title</title>
 </head>
 <body>
+<table>
+    <tr>
+        <th>First Name</th>
+        <th>Last Name</th>
+        <th>Email</th>
+        <th>Role</th>
+    </tr>
+
+    <tr th:each="user : ${users}">
+        <td th:text="${user.firstName}"></td>
+        <td th:text="${user.lastName}"></td>
+        <td th:text="${user.email}"></td>
+        <td th:each="role : ${user.roles}">
+            <span th:text="${role.role}"></span>
+        </td>
+        <td>
+            <a th:href="@{updateUser/{id}(id=${user.id})}">Update User </a>&nbsp
+            <a th:href="@{deleteUser/{id}(id=${user.id})}"> Delete User</a>
+        </td>
+    </tr>
+</table>
 
 </body>
 </html>

@@ -31,8 +31,8 @@ public class User {
     @Column(name = "username")
     private String username;
 
-    @Column(name = "position")
-    private String position;
+    //@Column(name = "position")
+    //private String position;
 
     @ManyToMany(fetch = FetchType.EAGER)
     @JoinTable(joinColumns = @JoinColumn(name = "user_id"),
@@ -49,14 +49,14 @@ public class User {
     }
 
     public User(String email, String password, String firstName, String lastName,
-                boolean enabled, String username, String position) {
+                boolean enabled, String username) {
         this.email = email;
         this.setPassword(password);
         this.firstName = firstName;
         this.lastName = lastName;
         this.enabled = enabled;
         this.username = username;
-        this.position = position;
+       // this.position = position;
     }
 
     public long getId() {
@@ -115,7 +115,7 @@ public class User {
     public void setUsername(String username) {
         this.username = username;
     }
-
+/*
     public String getPosition() {
         return position;
     }
@@ -123,7 +123,7 @@ public class User {
     public void setPosition(String position) {
         this.position = position;
     }
-
+*/
     public Collection<Role> getRoles() {
         return roles;
     }
