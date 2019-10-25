@@ -20,8 +20,17 @@ public class Product {
             inverseJoinColumns = @JoinColumn(name="order_id"))
     private Collection<Order> orders;
 
+
+    @ManyToOne (fetch = FetchType.EAGER)
+    @JoinColumn(name = "user_id")
+    private User user;
+
+    @ManyToMany
+    private Collection<User> users;
+
     @ManyToMany
     private Collection<WishList> wishLists;
+
 
     public Product(){}
 
@@ -77,11 +86,35 @@ public class Product {
         this.orders = orders;
     }
 
+    public void addOrder(Order order){
+        this.orders.add(order);
+    }
+
     public String getImageURL() {
         return imageURL;
     }
 
     public void setImageURL(String imageURL) {
         this.imageURL = imageURL;
+    }
+
+    public User getUser() {
+        return user;
+    }
+
+    public void setUser(User user) {
+        this.user = user;
+    }
+
+    @Override
+    public String toString() {
+        return "Product{" +
+                "productId=" + productId +
+                ", name='" + name + '\'' +
+                ", description='" + description + '\'' +
+                ", price='" + price + '\'' +
+                ", imageURL='" + imageURL + '\'' +
+                ", active=" + active +
+                '}';
     }
 }
