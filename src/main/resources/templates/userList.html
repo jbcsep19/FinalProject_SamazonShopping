@@ -5,20 +5,22 @@
     <title>Title</title>
 </head>
 <body>
+<!--Navbar-->
+<div th:insert="base :: navbar"></div>
+<br><br><br>
+
 <table>
     <tr>
         <th>First Name</th>
         <th>Last Name</th>
         <th>Email</th>
-        <th>Role</th>
+
     </tr>
 
     <tr th:each="user : ${users}">
         <td th:text="${user.firstName}"></td>
         <td th:text="${user.lastName}"></td>
         <td th:text="${user.email}"></td>
-        <td th:each="role : ${user.roles}">
-            <span th:text="${role.role}"></span>
         </td>
         <td>
             <a th:href="@{updateUser/{id}(id=${user.id})}">Update User </a>&nbsp
@@ -26,6 +28,5 @@
         </td>
     </tr>
 </table>
-
 </body>
 </html>

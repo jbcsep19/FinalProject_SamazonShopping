@@ -22,15 +22,13 @@ public class SecurityController {
     RoleRepository roleRepository;
 
 
-
-    @RequestMapping("/")
-    public String index() {
-        return "index";
-    }
+//    @RequestMapping("/")
+//    public String index() {
+//        return "index";
+//    }
 
     @RequestMapping("/login")
     public String login() {
-
         return "login";
     }
 //modification
@@ -59,33 +57,18 @@ public class SecurityController {
             return "registration";
         }
         // ***** authentication for administrator and user *********
-        if (role.equalsIgnoreCase("admin")){
-            userService.saveAdmin(user);
-            model.addAttribute("message", "Admin Account Created");
-            return "index";
-        }
-        else if (role.equalsIgnoreCase("user")){
-            userService.saveUser(user);
+        else {
+
+ //           userService.saveUser(user);
+
+            if ((user.getPosition()).equalsIgnoreCase("administrator")) {
+                userService.saveAdmin(user);
+            } else {
+                userService.saveUser(user);
+            }
             model.addAttribute("message", "User Account Created");
         }
             return "index";
     }
 
-    @RequestMapping("/userlist")
-    public String getUsers(Model model){
-        model.addAttribute("users", userRepository.findAll());
-        return "userList";
-    }
-
-    @RequestMapping("/updateUser/{id}")
-    public String getUser(@PathVariable("id") Long id, Model model){
-        model.addAttribute("user", userRepository.findById(id).get());
-        return "registration";
-    }
-
-    @RequestMapping("/deleteUser/{id}")
-    public String delUser(@PathVariable("id") Long id, Model model){
-        userRepository.deleteById(id);
-        return "userList";
-    }
 }

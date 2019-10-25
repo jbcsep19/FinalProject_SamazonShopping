@@ -1,14 +1,16 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th="https:www.thymeleaf.org">
+<html lang="en" xmlns:th="https://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
           integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
     <link href="https://fonts.googleapis.com/css?family=Roboto&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.1/css/all.css">
-    <title>Product Detail</title>
+    <title>Search Results</title>
 </head>
+
 <body>
+
 <!--Navbar-->
 <div th:insert="base :: navbar"></div>
 <br>
@@ -16,28 +18,30 @@
 <div class="container">
     <div class="row">
         <div class="col">
+
             <div class="alert alert text-center" style="background-color: lightsalmon" role="alert">
-                <h2>Product Details</h2>
+                <h2>Search Results</h2>
             </div>
 
-            <!--            <a href="/">Show All Products</a><br>-->
-            <a href="/list" type="button" class="btn btn-outline-success">All products</a><br><br>
 
-            Name: <span th:text="${product.name}"></span><br>
-            Description: <span th:text="${product.description}"></span><br>
-<!--            Posted Date: <span th:text="${#dates.format(job.date, 'MM-dd-yyyy')}"></span><br>-->
-            Price: <span th:text="${product.price}"></span><br>
-            Image: <span><img th:src="${product.imageURL}" width="100px" hight="100px" alt="product-image"></span><br>
-            Active: <span th:text="${product.active}"></span><br>
+            <div th:each="product : ${products}">
+
+                Name: <span th:text="${product.name}"></span><br>
+                Description: <span th:text="${product.description}"></span><br>
+                <!--            Posted Date: <span th:text="${#dates.format(job.date, 'MM-dd-yyyy')}"></span><br>-->
+                Price: <span th:text="${product.price}"></span><br>
+                Image URL: <span th:text="${product.imageURL}"></span><br>
+                Active: <span th:text="${product.active}"></span><br>
+            </div>
+            <br><br>
 
         </div>
     </div>
 </div>
-
-<br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
-
+<br><br><br><br><br><br><br><br><br><br><br><br><br>
 <!--Footer-->
 <div th:insert="base :: footer"></div>
+
 </body>
 
 <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"

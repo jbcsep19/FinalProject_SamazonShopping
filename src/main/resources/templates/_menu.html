@@ -1,15 +1,36 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Edit Product</title>
+    <title>Title</title>
 </head>
 <body>
-<!--Navbar-->
-<div th:insert="base :: navbar"></div>
-<br><br><br>
-
-
+<div class="menu-container"
+     xmlns:th="http://www.thymeleaf.org"
+     xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity4" >
+    <a th:href="@{/}">Home</a>
+    |
+    <a th:href="@{/productList}">
+        Product List
+    </a>
+    |
+    <a th:href="@{/shoppingCart}">
+        My Cart
+    </a>
+    |
+    <th:block sec:authorize="hasAnyRole('ROLE_MANAGER','ROLE_EMPLOYEE')">
+        <a th:href="@{/admin/orderList}">
+            Order List
+        </a>
+        |
+    </th:block>
+    <th:block sec:authorize="hasRole('ROLE_MANAGER')">
+        <a th:href="@{/admin/product}">
+            Create Product
+        </a>
+        |
+    </th:block>
+</div>
 <br><br><br><br><br><br><br><br><br><br><br>
 <!--Footer-->
 <div th:insert="base :: footer"></div>
