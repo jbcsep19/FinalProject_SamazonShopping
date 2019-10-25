@@ -23,20 +23,21 @@ public class Order {
 
     public Order(){}
 
-    public Order( String orderStatus, User user, Collection<Product> products) {
+    public Order(String orderStatus, User user, Collection<Product> products) {
 
         this.orderStatus = orderStatus;
         this.user = user;
         this.products = products;
     }
 
-    /*public double getTotal_cost() {
+/*public double getTotal_cost() {
         return total_cost;
     }
 
     public void setTotal_cost(double total_cost) {
         this.total_cost = total_cost;
     }*/
+
 
     public User getUser() {
         return user;
@@ -102,3 +103,77 @@ public class Order {
 
 
 }
+/*
+package com.example.demo;
+
+import org.springframework.data.annotation.Id;
+
+import javax.persistence.*;
+import java.util.Collection;
+import java.util.HashSet;
+import java.util.Set;
+
+@Entity
+public class Order {
+
+    @Id
+    @GeneratedValue(strategy= GenerationType.AUTO)
+    private long id;
+
+    private String orderStatus;
+    private User user;
+
+    @ManyToMany(cascade = CascadeType.MERGE)
+    @JoinTable(name = "order_product", joinColumns = { @JoinColumn(name = "id") },
+            inverseJoinColumns = { @JoinColumn(name = "productid") })
+    private Set<Product> products = new HashSet<>(0);
+
+    public Order() {
+    }
+
+    public Order(long id, String orderStatus) {
+        this.id = id;
+        this.orderStatus = orderStatus;
+    }
+
+
+    public long getId() {
+        return id;
+    }
+
+    public void setId(long id) {
+        this.id = id;
+    }
+
+    @Column(name = "Order_status")
+    public String getOrderStatus() {
+        return orderStatus;
+    }
+
+    public void setOrderStatus(String orderStatus) {
+        this.orderStatus = orderStatus;
+    }
+
+    @Column(name = "user")
+    public User getUser() {
+        return user;
+    }
+
+    public void setUser(User user) {
+        this.user = user;
+    }
+
+    */
+/*@ManyToMany(cascade = CascadeType.MERGE)
+    @JoinTable(name = "order_product", joinColumns = { @JoinColumn(name = "id") },
+            inverseJoinColumns = { @JoinColumn(name = "productid") })*//*
+
+    public Set<Product> getProducts() {
+        return products;
+    }
+
+    public void setProducts(Set<Product> products) {
+        this.products = products;
+    }
+}
+*/

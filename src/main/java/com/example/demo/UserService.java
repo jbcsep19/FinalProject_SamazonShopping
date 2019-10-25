@@ -9,6 +9,7 @@ import org.springframework.stereotype.Service;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collection;
+import java.util.List;
 
 @Service
 public class UserService {
@@ -60,14 +61,22 @@ public class UserService {
         return user;
     }
 
-    public Collection<Order> getUserOrders(){
+    public Collection<Product> getProduct(){
+        Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+        String currentusername = authentication.getName();
+        User user = userRepository.findByUsername(currentusername);
+        Collection<Product> products = user.getProducts();
+        return products;
+    }
+
+   /* public Collection<Order> getUserOrders(){
         Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
         String currentusername = authentication.getName();
         User user = userRepository.findByUsername(currentusername);
         Collection<Order> tempUserOrders = user.getOrders();
 
         return tempUserOrders;
-    }
+    }*/
 
 //    public Collection<Product> getUserOrderProducts() {
 //        Collection<Order> tempUserOrders = getUserOrders();
@@ -82,7 +91,7 @@ public class UserService {
 //    }
 
 
-    public ArrayList<String> getUserOrderProductsNames() {
+   /* public ArrayList<String> getUserOrderProductsNames() {
         Collection<Order> tempUserOrders = getUserOrders();
         Collection<Product> tempOrderProducts = new ArrayList<>();
         ArrayList<String> tempProductNames = new ArrayList<>();
@@ -94,5 +103,5 @@ public class UserService {
         }
         return tempProductNames;
     }
-
+*/
 }

@@ -41,8 +41,10 @@
                 </tr>
                 </thead>
                 <tbody>
+<!--                <span th:if="${myuser.product.productId == product.productId}">-->
                 <tr th:each="product : ${products}">
 <!--                    <td th:text="${product.firstName}"></td>-->
+<!--<tr>-->
                     <td th:text="${product.name}"></td>
                     <td th:text="${product.description}"></td>
                     <td th:text="${product.price}"></td>
@@ -60,6 +62,7 @@
 <!--                        <a th:href="@{/addtoCart/{id}(id=${product.productId})}" type="button" class="btn btn-outline-success">Add to Cart</a> - -->
                     </td>
                 </tr>
+<!--                </span>-->
                 </tbody>
             </table>
         </div>

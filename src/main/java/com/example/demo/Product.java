@@ -16,8 +16,8 @@ public class Product {
     private boolean active;
 
     @ManyToMany
-    @JoinTable(joinColumns = @JoinColumn(name="product_id"),
-            inverseJoinColumns = @JoinColumn(name="order_id"))
+   /* @JoinTable(joinColumns = @JoinColumn(name="product_id"),
+            inverseJoinColumns = @JoinColumn(name="order_id"))*/
     private   Collection<Order> orders;
 
 
@@ -78,6 +78,7 @@ public class Product {
     public Collection<Order> getOrders() {
         return orders;
     }
+
 
     public void setOrders(Collection<Order> orders) {
         this.orders = orders;
