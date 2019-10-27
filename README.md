@@ -20,8 +20,7 @@ Stakeholders:
   Dir of Database Admin:    Margo Kelly
 
   Magneto Project Team:
-    Backend Developer:        Margo Kelly
-    Frontend Developer:       Surendra K Bijukchhe
+    Backend Developers:        Margo Kelly, Surendra K Bijukchhe
     User Interface:           Erica Jenise Gleaton
 
 
