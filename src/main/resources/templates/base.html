@@ -42,30 +42,28 @@
 </head>
 <body>
 <div th:fragment="navbar">
-<div class="py-1 bg-primary">
-    <div class="container">
-        <div class="row no-gutters d-flex align-items-start align-items-center px-md-0">
-            <div class="col-lg-12 d-block">
-                <div class="row d-flex">
-                    <div class="col-md pr-4 d-flex topper align-items-center">
-                        <div class="icon mr-2 d-flex justify-content-center align-items-center"><span class="icon-phone2"></span></div>
-                        <span class="text">1-800 MAGNETO</span>
-                    </div>
-                    <div class="col-md pr-4 d-flex topper align-items-center">
-                        <div class="icon mr-2 d-flex justify-content-center align-items-center"><span class="icon-paper-plane"></span></div>
-                        <span class="text">samazonapp@gmail.com</span>
-                    </div>
-                    <div class="col-md-5 pr-4 d-flex topper align-items-center text-lg-right">
-                        <span class="text">3-5 Business days delivery &amp; Free Returns</span>
+    <div class="py-1 bg-primary">
+        <div class="container">
+            <div class="row no-gutters d-flex align-items-start align-items-center px-md-0">
+                <div class="col-lg-12 d-block">
+                    <div class="row d-flex">
+                        <div class="col-md pr-4 d-flex topper align-items-center">
+                            <div class="icon mr-2 d-flex justify-content-center align-items-center"><span class="icon-phone2"></span></div>
+                            <span class="text">1-800 MAGNETO</span>
+                        </div>
+                        <div class="col-md pr-4 d-flex topper align-items-center">
+                            <div class="icon mr-2 d-flex justify-content-center align-items-center"><span class="icon-paper-plane"></span></div>
+                            <span class="text">samazonapp@gmail.com</span>
+                        </div>
+                        <div class="col-md-5 pr-4 d-flex topper align-items-center text-lg-right">
+                            <span class="text">3-5 Business days delivery &amp; Free Returns</span>
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
     </div>
-</div>
-
-
-    <nav class="navbar navbar-expand-lg navbar-light "style="background-color: beige" th:fragment="main-navbar" >
+    <nav class="navbar navbar-expand-lg navbar-light "style="background-color: beige"  >
         <a class="navbar-brand text-green"  href="/">Magneto Megafood SAmaZon</a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup"
                 aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
@@ -90,7 +88,7 @@
                     Welcome [[${#authentication.name}]]!
                 </li>
                 <li class="nav-item"><a href="index.html" class="nav-link">Home</a></li>
-
+                <li class="nav-item active"><a href="about.html" class="nav-link">About</a></li>
                 <li class="nav-item dropdown">
                     <a class="nav-link dropdown-toggle" href="#" id="dropdown04" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Shop</a>
                     <div class="dropdown-menu" aria-labelledby="dropdown04">
@@ -102,8 +100,6 @@
                         <a class="dropdown-item" href="checkout.html">Checkout</a>
                     </div>
                 </li>
-                <li class="nav-item active"><a href="about.html" class="nav-link">About</a></li>
-                <li class="nav-item"><a href="blog.html" class="nav-link">Blog</a></li>
                 <li class="nav-item"><a href="contact.html" class="nav-link">Contact</a></li>
                 <li class="nav-item dropdown">
                     <a class="nav-link dropdown-toggle" href="#" id="dropdown06" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Account</a>
@@ -142,7 +138,7 @@
 
 
 <div th:fragment="footer">
-    <div class="alert alert" style="background-color: lawngreen" role="alert">
+    <div class="py-1 bg-primary">
         <div class="row justify-content-rt-center">
             <div class="col" style="color: white">
                 &copy;2019
@@ -165,7 +161,6 @@
                     <i class="fab fa-pinterest pr-1 text-white"></i> Pinterest</button>
             </div>
         </div>
-        <p style="color: white">Smile</p>
     </div>
 </div>
 <section class="ftco-section bg-light">
@@ -227,29 +222,19 @@
                 </a>
             </div>
         </div>
-        <div class="row mb-6">
+        <div class="row mb-8">
             <div class="col-md">
-                <div class="ftco-footer-widget mb-6">
-                    <h2 class="ftco-heading-2">Magneto Megafoods</h2>
-                    <p>Magneto Group Members: Surendra K Bijukchhe, Erica Jenise Gleaton, and Margo Kelly</p>
+                <div class="ftco-footer-widget mb-8">
+                    <h2 class="ftco-heading-2">Magneto Team Members</h2>
+                    <p>Surendra K Bijukchhe, Erica Jenise Gleaton, and Margo Kelly</p>
                 </div>
             </div>
-            <div class="col-md">
-                <div class="ftco-footer-widget mb-4 ml-md-5">
-                    <h2 class="ftco-heading-2">Menu</h2>
-                    <ul class="list-unstyled">
-                        <li><a href="about.html" class="py-2 d-block">About</a></li>
-                        <li><a href="product.html" class="py-2 d-block">Products</a></li>
-                        <li><a href="cart.html" class="py-2 d-block">Cart</a></li>
-                        <li><a href="contact.html" class="py-2 d-block">Contact Us</a></li>
-                    </ul>
-                </div>
-            </div>
+
 
             <div class="col-md">
                 <div class="ftco-footer-widget mb-4">
                     <h2 class="ftco-heading-2">Have a Questions?</h2>
-                    <div class="block-23 mb-3">
+                    <div class="block-23 mb-4">
                         <ul>
                             <li><span class="icon icon-map-marker"></span><span class="text">12 S Summit Ave Gaithersburg, MD 20877</span></li>
                             <li><a href="#"><span class="icon icon-phone"></span><span class="text">1-800 MAGNETO</span></a></li>
@@ -259,7 +244,7 @@
                 </div>
             </div>
         </div>
-        <div class="row">
+<!--        <div class="row">
             <div class="col-md-12 text-center">
                         <div class="d-flex">
                            <ul class="ftco-footer-social align-content-md-center ">
@@ -272,12 +257,12 @@
                         </div>
 
 
-                <p><!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
+                <p>&lt;!&ndash; Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. &ndash;&gt;
                     Copyright &copy;<script>document.write(new Date().getFullYear());</script> All rights reserved | This template is made with <i class="icon-heart color-danger" aria-hidden="true"></i> by <a href="https://colorlib.com" target="_blank">Colorlib</a>
-                    <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
+                    &lt;!&ndash; Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. &ndash;&gt;
                 </p>
             </div>
-        </div>
+        </div>-->
     </div>
 </footer>
 
@@ -341,7 +326,6 @@
     });
 </script>
 
-<br><br><br><br><br><br><br><br><br><br><br>
 <!--Footer-->
 <div th:insert="base :: footer"></div>
 
