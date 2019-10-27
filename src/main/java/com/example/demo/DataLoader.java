@@ -121,7 +121,7 @@ public class DataLoader implements CommandLineRunner {
                 String[] product_data = line.split("\t");
                 boolean active = Boolean.parseBoolean(product_data[4]);
                 Product product = new Product(product_data[0], product_data[1], product_data[2],
-                        product_data[3], active);        //name, description, price, URL, active
+                        product_data[6], active);        //name, description, price, URL, active
                 productRepository.save(product);
             }
         }catch(Exception IOException){
