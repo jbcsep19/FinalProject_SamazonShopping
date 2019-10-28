@@ -13,25 +13,25 @@
 <br><br><br>
 
 <h1>Add Product Form</h1>  
-<form action=”#” th:action=”@{/process}” th:object=”${product}” method=”post”>  
-    <input type=”hidden” th:field=”*{id}” />  
-    Name :<input type=”text” th:field=”*{name}” />  
-    <span th:if=”${#fields.hasErrors(‘name’)}”  
-          th:errors=”*{name}”></span><br />
-    Description :<textarea rows=”3” th:field=”*{description}” />
-    <span th:if=”${#fields.hasErrors(‘description’)}”
-          th:errors=”*{description}”></span><br />
-    Price :<input type=”text” th:field=”*{price}” />
-    <span th:if=”${#fields.hasErrors(‘price’)}”  
-          th:errors=”*{price}”></span><br />
-    urls :<input type=”text” th:field=”*{imageURL}” />
-    <span th:if=”${#fields.hasErrors(‘imageURL’)}”
-          th:errors=”*{imageURL}”></span><br />
-    Active :<input type=”text” th:field=”*{active}” />
-    <span th:if=”${#fields.hasErrors('active’)}”
-          th:errors=”*{active}”></span><br />  
+<form action="#"th:action="@{/process}" th:object="${product}" method="post">
+    <input type="hidden" th:field="*{id}" />
+    Name :<input type="text" th:field="*{name}" />
+    <span th:if="${#fields.hasErrors('name')}"
+          th:errors="*{name}"></span><br />
+    Description :<textarea rows="3" th:field="*{description}" />
+    <span th:if="${#fields.hasErrors('description')}"
+          th:errors="*{description}"></span><br />
+    Price :<input type="text" th:field="*{price}" />
+    <span th:if="${#fields.hasErrors('price')}"
+          th:errors="*{price}"></span><br />
+    urls :<input type="text" th:field="*{imageURL}" />
+    <span th:if="${#fields.hasErrors('imageURL')}"
+          th:errors="*{imageURL}"></span><br />
+    Active :<input type="text" th:field="*{active}" />
+    <span th:if="${#fields.hasErrors('active')}"
+          th:errors="*{active}"></span><br />
     <br />  
-    <input type=”submit” value=”Submit” />  
+    <input type="submit" value="Submit" />
 </form>
 <br><br><br><br><br><br><br><br><br><br><br>
 <!--Footer-->

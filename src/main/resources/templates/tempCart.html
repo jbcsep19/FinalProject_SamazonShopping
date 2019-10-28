@@ -13,7 +13,7 @@
 </head>
 <body>
 <div th:insert="base :: navbar"></div>
-<h2>Cart</h2>
+<h2>Cart</h2><a th:href="@{/checkout/{id}(id=${order.})}" type="button" class="btn btn-outline-success">Check Out</a>
 <table class="table">
     <thead class="thead-dark">
     <tr>
