@@ -54,7 +54,6 @@ public class ShoppingCartService {
             product = productRepository.findById(entry.getKey().getProductId()).get();
             entry.getKey().setQuantity(entry.getValue());
         }
-//       Set<Product> myProducts = products.keySet();
         productRepository.saveAll(products.keySet());
         productRepository.flush();
         products.clear();
@@ -90,7 +89,4 @@ public class ShoppingCartService {
         //rounding up BigDecimal value
         return new BigDecimal(grandTotal).setScale(2, BigDecimal.ROUND_HALF_EVEN);
     }
-
-
-
 }

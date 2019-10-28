@@ -41,7 +41,7 @@ public class SimpleEmailService {
                         " \n Shipping charge: $ " + shoppingCartService.getShipping().toString() +
                         " \n Grand Total: $ " + shoppingCartService.getGrandTotal().toString() +
                         "\n\n Have a great day and thanks again !\n\n" +
-                        " Samazon Shopping Site"
+                        " - Samazon Shopping Site"
         );
         sender.send(message);
     }

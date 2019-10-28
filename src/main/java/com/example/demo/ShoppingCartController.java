@@ -39,9 +39,6 @@ public class ShoppingCartController {
         this.simpleEmailService = simpleEmailService;
     }
 
-
-
-
     //    @GetMapping("/addtoCart")
     @GetMapping ("/shoppingCart")
     public ModelAndView shoppingCart() {
@@ -57,41 +54,18 @@ public class ShoppingCartController {
     @GetMapping("/addtoCart/{productId}")
     public ModelAndView addProductToCart(@PathVariable("productId") Long productId, Model model) {
         productService.findById(productId).ifPresent(shoppingCartService::addProduct);
-//        model.addAttribute("products", order1.getProducts());
-//        productService.findById(productId).ifPresent(shoppingCartService::addProduct);
         return shoppingCart();
-//        return "tempCart";
     }
 
     @GetMapping("/removeProduct/{productId}")
     public ModelAndView removeProductFromCart(@PathVariable("productId") Long productId) {
-//        productService.findById(productId).ifPresent(shoppingCartService::removeProduct);
         productService.findById(productId).ifPresent(shoppingCartService::removeProduct);
         return shoppingCart();
     }
 
 
-
-    /*@GetMapping("/shoppingCart/checkout")
-    public ModelAndView checkout() {
-        try {
-            shoppingCartService.checkout();
-//            shoppingCartService.getTotal();
-        } catch (NotEnoughProductsInStockException e) {
-            return shoppingCart().addObject("outOfStockMessage", e.getMessage());
-        }
-        return shoppingCart();
-    }*/
-
-    /*@GetMapping("/checkout")
-    public ModelAndView checkout(){
-        shoppingCartService.checkout();
-        shoppingCartService.getGrandTotal();
-        return shoppingCart();
-    }*/
     @RequestMapping("/checkout")
     public String checkout(Model model){
-//        shoppingCartService.checkout();
         try {
             simpleEmailService.sendEmail();
         }
@@ -103,6 +77,13 @@ public class ShoppingCartController {
         model.addAttribute("grandTotal", shoppingCartService.getGrandTotal().toString());
         return "checkoutlist";
     }
+
+
+    @RequestMapping("/history")
+    public String getHistory(Model model){
+        model.addAttribute("products", productRepository.findAllByOrderByUser());
+        return "historyList";
+    }
     /*@GetMapping("checkout")
     public ModelAndView checkout() {
         try {
@@ -113,4 +94,5 @@ public class ShoppingCartController {
         return shoppingCart();
     }
 */
+
 }

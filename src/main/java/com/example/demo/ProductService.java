@@ -17,11 +17,11 @@ public class ProductService {
     public ProductService(ProductRepository productRepository) {
         this.productRepository = productRepository;
     }
-   public Page<Product> findAllProductsPageable(Pageable pageable) {
+    public Page<Product> findAllProductsPageable(Pageable pageable) {
         return productRepository.findAll(pageable);
     }
 
-     public Optional<Product> findById(Long id) {
+    public Optional<Product> findById(Long id) {
         return productRepository.findById(id);
     }
 }

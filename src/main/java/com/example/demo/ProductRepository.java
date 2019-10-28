@@ -10,9 +10,6 @@ public interface ProductRepository extends JpaRepository<Product, Long> {
     ArrayList<Product> findByNameContainingIgnoreCase(String name);
     ArrayList<Product> findByDescriptionContainingIgnoreCase(String details);
     Optional<Product> findById(Long id);
-
-   /* @Override
-    < Product> S save(S s);
-    */
+    ArrayList<Product> findAllByOrderByUser();
 
 }
