@@ -25,11 +25,22 @@ public class HomeController {
         return "index";
     }*/
 
+    @RequestMapping("/about")
+    public String getAbout(Model model){
+        model.addAttribute("product", new Product());
+        return "about";
+    }
+
+    @RequestMapping("/aboutus")
+    public String aboutUs(Model model){
+        model.addAttribute("product", new Product());
+        return "aboutus";
+    }
+
     @RequestMapping("/list")
     public String productList(Model model){
         model.addAttribute("products", productRepository.findAll());
 //        model.addAttribute("user",userService.getUser());
-
         if(userService.getUser() != null) {
             model.addAttribute("user_id", userService.getUser().getId());
         }
@@ -39,7 +50,7 @@ public class HomeController {
     @RequestMapping("/add")
     public String addProduct(Model model){
         model.addAttribute("product", new Product());
-        return "add";
+        return "productform";
     }
 
     /*@PostMapping("/processjob")
@@ -63,12 +74,12 @@ public class HomeController {
 
     @PostMapping("/processproduct")
     public String processForm(@Valid Product product, BindingResult result){
-       if(result.hasErrors()){
-           return "productform";
+        if(result.hasErrors()){
+            return "productform";
         }
         product.setUser(userService.getUser());
         productRepository.save(product);
-       return "redirect:/list";
+        return "redirect:/list";
     }
 
     @PostMapping("/processsearch")
@@ -87,25 +98,27 @@ public class HomeController {
     @RequestMapping("/detail/{id}")
     public String showJob(@PathVariable("id") long id, Model model) {
         model.addAttribute("product", productRepository.findById(id).get());
-        User user = userService.getUser();
         return "productDetails";
     }
 
     @RequestMapping("/update/{id}")
     public String updateProduct(@PathVariable("id") long id, Model model) {
         model.addAttribute("product", productRepository.findById(id).get());
+
         return "productform";
+
+//        return "add";
     }
 
     @RequestMapping("/updateUser/{id}")
     public String updateUser(@PathVariable("id") long id, Model model) {
         model.addAttribute("user", userRepository.findById(id).get());
         return "registration";
-
     }
 
+
     @RequestMapping("/delete/{id}")
-    public String deleteProduct(@PathVariable("id")long id) {
+    public String deleteJob(@PathVariable("id")long id) {
         productRepository.deleteById(id);
         return "redirect:/list";
     }

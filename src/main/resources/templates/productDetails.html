@@ -32,16 +32,24 @@
 <!--            Posted Date: <span th:text="${#dates.format(job.date, 'MM-dd-yyyy')}"></span><br>-->
             Price: <span th:text="${product.price}"></span><br>
             Image: <span><img th:src="${product.imageURL}" width="100px" hight="100px" alt="product-image"></span><br>
+
+            <div sec:authorize="hasAuthority('ADMIN')">
+            Image URL: <span th:text="${product.imageURL}"></span><br>
+            </div>
+
             Active: <span th:text="${product.active}"></span><br>
 
         </div>
     </div>
 </div>
 
+
 <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
 
 <!--Footer-->
 <div th:insert="base :: footer"></div>
+<br><br><br><br><br><br><br><br><br><br><br>
+<!--Footer-->
 </body>
 
 <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"

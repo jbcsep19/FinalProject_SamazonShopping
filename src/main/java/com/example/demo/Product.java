@@ -1,7 +1,11 @@
 package com.example.demo;
 
 import javax.persistence.*;
+import javax.validation.constraints.DecimalMin;
+import javax.validation.constraints.Min;
+import java.math.BigDecimal;
 import java.util.Collection;
+import java.util.Objects;
 
 @Entity
 public class Product {
@@ -16,6 +20,18 @@ public class Product {
     private boolean active;
 
 
+    @Column(name = "quantity")
+    @Min(value = 0, message = "*Quantity has to be non negative number")
+    private Integer quantity;
+
+   /* @Column(name = "price", nullable = false)
+    @DecimalMin(value = "0.00", message = "*Price has to be non negative number")
+    private BigDecimal price;
+*/
+    /*@ManyToMany
+     *//* @JoinTable(joinColumns = @JoinColumn(name="product_id"),
+            inverseJoinColumns = @JoinColumn(name="order_id"))*//*
+    private   Collection<Order> orders;*/
 
     @ManyToOne (fetch = FetchType.EAGER)
     @JoinColumn(name ="order_id")
@@ -29,13 +45,12 @@ public class Product {
     private User user;
 
     @ManyToMany
-    private Collection<User> users;
-
-    @ManyToMany
     private Collection<WishList> wishLists;
 
 
     public Product(){}
+
+
 
     public Product(String name, String description, String price, String image, boolean active){
         this.name = name;
@@ -52,6 +67,14 @@ public class Product {
 
     public void setName(String name) {
         this.name = name;
+    }
+
+    public Integer getQuantity() {
+        return quantity;
+    }
+
+    public void setQuantity(Integer quantity) {
+        this.quantity = quantity;
     }
 
     public String getPrice() {
@@ -90,14 +113,6 @@ public class Product {
         this.order = order;
     }
 
-    public Collection<User> getUsers() {
-        return users;
-    }
-
-    public void setUsers(Collection<User> users) {
-        this.users = users;
-    }
-
     public Collection<WishList> getWishLists() {
         return wishLists;
     }
@@ -106,7 +121,15 @@ public class Product {
         this.wishLists = wishLists;
     }
 
-    //public void addOrder(Order order){
+
+    /* public Collection<Order> getOrders() {
+        return orders;
+    }
+    public void setOrders(Collection<Order> orders) {
+        this.orders = orders;
+    }*/
+
+//    public void addOrder(Order order){
 //        this.orders.add(order);
 //    }
 
@@ -136,5 +159,32 @@ public class Product {
                 ", imageURL='" + imageURL + '\'' +
                 ", active=" + active +
                 '}';
+    }
+
+    /*@Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Product product = (Product) o;
+        return productId.equals(product.productId);
+    }
+    @Override
+    public int hashCode() {
+        return productId.hashCode();
+    }*/
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+//        if (!(o instanceof Product))
+        if (o == null || getClass() != o.getClass())
+            return false;
+        Product product = (Product) o;
+        return getProductId() == product.getProductId();
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash();
     }
 }

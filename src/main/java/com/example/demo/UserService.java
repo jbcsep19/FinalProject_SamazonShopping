@@ -9,6 +9,7 @@ import org.springframework.stereotype.Service;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collection;
+import java.util.List;
 
 @Service
 public class UserService {
@@ -60,38 +61,45 @@ public class UserService {
         return user;
     }
 
-    public Collection<Order> getUserOrders(){
+    public Collection<Product> getProduct(){
+        Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+        String currentusername = authentication.getName();
+        User user = userRepository.findByUsername(currentusername);
+        Collection<Product> products = user.getProducts();
+        return products;
+    }
+
+   /* public Collection<Order> getUserOrders(){
         Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
         String currentusername = authentication.getName();
         User user = userRepository.findByUsername(currentusername);
         Collection<Order> tempUserOrders = user.getOrders();
-
         return tempUserOrders;
-    }
+    }*/
 
-//    public String getUserOrderProductsNames() {
+//    public Collection<Product> getUserOrderProducts() {
 //        Collection<Order> tempUserOrders = getUserOrders();
 //        Collection<Product> tempOrderProducts = new ArrayList<>();
 //        ArrayList<String> tempProductNames = new ArrayList<>();
 //        for (Order order : tempUserOrders) {
 //
 //            for (Product tempProduct : order.getProducts()) {
-//                //   tempProductNames.add(tempProduct.getName());
-//                System.out.println(tempProduct.getName());
+//                tempOrderProducts.add(tempProduct.getName());
 //            }
 //        }
-//        return "getUserOrderProductsNames - Finished";
 //    }
-    /*public Collection<Product> getUserOrderProducts(){
-        Collection<Order> userOrders = getUserOrders();
-        for (Order order : userOrders){
-            if(order.getOrderStatus().equalsIgnoreCase("current")){
-                return order.getProducts();
+
+
+   /* public ArrayList<String> getUserOrderProductsNames() {
+        Collection<Order> tempUserOrders = getUserOrders();
+        Collection<Product> tempOrderProducts = new ArrayList<>();
+        ArrayList<String> tempProductNames = new ArrayList<>();
+        for (Order order : tempUserOrders) {
+            for (Product tempProduct : order.getProducts()) {
+                tempProductNames.add(tempProduct.getName());
             }
         }
-        return null;
-    }*/
-
-
-
+        return tempProductNames;
+    }
+*/
 }

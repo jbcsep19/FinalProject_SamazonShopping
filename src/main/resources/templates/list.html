@@ -38,9 +38,13 @@
                 <body>
                 <tr th:each="product : ${products}">
                     <td th:text="${product.name}"></td>
-                    <td th:text="${product.price}"></td>
+                    <td th:text="${product.price}">$</td>
                     <td th:text="${product.description}"></td>
-                    <td><img th:src="${product.imageURL}" width="50px" hight="50px" alt="product-image"></td>
+
+<!--                    <td th:text="${product.imageURL}"></td>-->
+<!--                    <td img src="${product.imageURL}" alt=" " class="card-img-top" ></td>-->
+
+                    <td><img th:src="${product.imageURL}" width="50px" alt="product-image"></td>
                     <td th:text="${product.active}"></td>
                     <td>
                         <div sec:authorize="hasAuthority('ADMIN')">
@@ -48,7 +52,7 @@
                             <a th:href="@{/delete/{id}(id=${product.productId})}" type="button" class="btn btn-outline-success">Delete</a>
                         </div>
                         <a th:href="@{/detail/{id}(id=${product.productId})}" type="button" class="btn btn-outline-success">Details</a>
-                        <a th:href="@{/addtoCart/{id}(id=${product.productId})}" type="button" class="btn btn-outline-success">Add to Cart</a>
+                        <a th:href="@{/addtoCart/{id}(id=${product.productId})}" type="button" class="btn btn-outline-success">Add to Cart</a> -
                     </td>
                 </tr>
                 </body>
@@ -60,7 +64,7 @@
 <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
 <div th:insert="base :: footer"></div>
 </body>
-</html>
+
 <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
         integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
         crossorigin="anonymous"></script>
@@ -70,45 +74,4 @@
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
         integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
         crossorigin="anonymous"></script>
-
-<!--<h1>Product List</h1>-->
-<!--<a href="/add">Add a Product</a><br />-->
-<!--<table>-->
-<!--    <tr>-->
-<!--        <th>Name</th>-->
-<!--        <th>Description</th>-->
-<!--        <th>Price</th>-->
-<!--        <td>Actions</td>-->
-<!--    </tr>-->
-<!--    <tr th:each="product: ${products}">-->
-<!--        <td th:text="${product.name}"></td>-->
-<!--        <td th:text="${product.description}"></td>-->
-<!--        <td th:text="${product.price}"></td>-->
-<!--        <td><img src="${product.imageURL}" alt="product-image"></td>-->
-<!--        <td>-->
-<!--            <a th:href="@{/addtoCart/{id}(id=${product.productId})}">Add to Cart</a> - -->
-<!--            <a th:href="@{/detail/{id}(id=${product.productId})}">Details</a> - -->
-<!--        <div sec:authorize="hasAuthority('ADMIN')">-->
-<!--            <a th:href="@{/delete/{id}(id=${product.productId})}">Delete</a>-->
-<!--        </div>-->
-<!--        </td></tr>-->
-<!--</table>-->
-
-
-<!--<br><br><br><br><br><br><br><br><br><br><br>-->
-<!--&lt;!&ndash;Footer&ndash;&gt;-->
-<!--<div th:insert="base :: footer"></div>-->
-
-<!--</body>-->
-
-<!--<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"-->
-<!--        integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"-->
-<!--        crossorigin="anonymous"></script>-->
-<!--<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"-->
-<!--        integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"-->
-<!--        crossorigin="anonymous"></script>-->
-<!--<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"-->
-<!--        integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"-->
-<!--        crossorigin="anonymous"></script>-->
-<!--</html>-->
-
+</html>

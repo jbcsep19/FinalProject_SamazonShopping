@@ -5,13 +5,17 @@
       xmlns:w3="http://www.w3.org/1999/xhtml">
 <head>
     <meta charset="UTF-8">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+          integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <link href="https://fonts.googleapis.com/css?family=Roboto&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.1/css/all.css">
     <title>Magneto's Megafoods: Add Products</title>
 </head>
 <body>
 <!--Navbar-->
 <div th:insert="base :: navbar"></div>
 <br><br><br>
-
+<div class="container">
 <h1>Add Product Form</h1>  
 <form action="#"th:action="@{/process}" th:object="${product}" method="post">
     <input type="hidden" th:field="*{id}" />
@@ -33,6 +37,7 @@
     <br />  
     <input type="submit" value="Submit" />
 </form>
+</div>
 <br><br><br><br><br><br><br><br><br><br><br>
 <!--Footer-->
 <div th:insert="base :: footer"></div>
