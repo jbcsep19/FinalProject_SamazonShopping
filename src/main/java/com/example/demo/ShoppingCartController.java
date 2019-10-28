@@ -103,6 +103,12 @@ public class ShoppingCartController {
         model.addAttribute("grandTotal", shoppingCartService.getGrandTotal().toString());
         return "checkoutlist";
     }
+
+    @RequestMapping("/history")
+    public String getHistory(Model model){
+        model.addAttribute("products", productRepository.findAllByOrderByUser());
+        return "historyList";
+    }
     /*@GetMapping("checkout")
     public ModelAndView checkout() {
         try {
