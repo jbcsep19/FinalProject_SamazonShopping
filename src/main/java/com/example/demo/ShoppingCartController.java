@@ -82,6 +82,7 @@ public class ShoppingCartController {
     @RequestMapping("/history")
     public String getHistory(Model model){
         model.addAttribute("products", productRepository.findAllByOrderByUser());
+        model.addAttribute("user",userService.getUser());
         return "historyList";
     }
     /*@GetMapping("checkout")
