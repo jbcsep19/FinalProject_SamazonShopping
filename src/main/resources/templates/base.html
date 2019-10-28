@@ -1,16 +1,12 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="https://www.thymeleaf.org"
-      xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity4"
-      xmlns:sec1="http://www.thymeleaf.org/extras/spring-security"
-      xmlns:w3="http://www.w3.org/1999/xhtml">
+      xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity4">
+
 <head>
     <meta charset="UTF-8">
-    <!--<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
-          integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
-          integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
-    <link href="https://fonts.googleapis.com/css?family=Roboto&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.1/css/all.css">-->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <link rel="stylesheet" href="css/Style.css" type="text/css">
+    <link rel="stylesheet" type="text/css" th:href="@{/style.css}">
 
     <title>Base</title>
     <meta charset="utf-8">
@@ -89,7 +85,7 @@
                 <li sec:authorize="isAuthenticated()" class="nav-link " style="color: gray" th:inline="text">
                     Welcome [[${#authentication.name}]]!
                 </li>
-                <li class="nav-item"><a href="/index" class="nav-link">Home</a></li>
+                <li class="nav-item"><a href="/" class="nav-link">Home</a></li>
                 <li class="nav-item active"><a href="/aboutus" class="nav-link">About</a></li>
                 <li class="nav-item dropdown">
                     <a class="nav-link dropdown-toggle" href="#" id="dropdown04" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Shop</a>
@@ -97,9 +93,6 @@
 <!--                        <a class="dropdown-item" href="/product">Products</a>-->
                         <a class="dropdown-item" href="/list">Products List</a>
                         <a class="dropdown-item" href="/shoppingCart">Wishlist</a>
-                        <a class="dropdown-item" href="/cart">Cart</a>
-                        <a class="dropdown-item" href="/addtoCart">Order</a>
-                        <a class="dropdown-item" href="/checkout">Checkout</a>
                     </div>
                 </li>
                 <li class="nav-item"><a href="/xcontact" class="nav-link">Contact</a></li>

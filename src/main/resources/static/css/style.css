@@ -13,8 +13,7 @@ body{
   font-family: Arial, Helvetica, sans-serif;
 }
 
-
-div{
+/*div{
   background-color: white;
   background-position: center;
   margin: 5%;
@@ -22,7 +21,7 @@ div{
   border-color: beige;
   border-width:5px;
 
-}
+}*/
 
 h1{
   font-weight: bold;
@@ -50,13 +49,9 @@ p{
 
 }
 
-table{
 
-}
 
-img {
 
-}
 
 
 
