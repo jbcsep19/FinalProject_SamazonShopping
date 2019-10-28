@@ -1,9 +1,7 @@
-<!DOCTYPE html>
+<!DOCTYPE HTML>
 <html xmlns:th="http://www.thymeleaf.org">
-<head>
-    <meta charset="UTF-8">
-    <title>Access Denied</title>
 
+<head>
     <meta charset="UTF-8">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
           integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
@@ -18,16 +16,26 @@
 <br>
 
 <div class="container">
-    <div class="starter-template">
-        <h1>403 - Access is denied</h1>
-        <div th:inline="text">Hello '[[${#httpServletRequest.remoteUser}]]',
-            you do not have permission to access this page.
+
+    <div class ="jumbotron">
+
+    <h1 th:if="${errorMessage}" th:utext="${errorMessage}">Error java.lang.NullPointerException</h1>
+<!--    <h1 th:if="!${errorMessage}">404 - Page does not exist</h1>-->
+    <h1 th:if="!${errorMessage}">403 - Access is denied</h1><br>
+
+    <div class="container">
+        <div class="starter-template">
+<!--            <h1>403 - Access is denied</h1>-->
+            <h3 th:inline="text">Hello '[[${#httpServletRequest.remoteUser}]]',
+                you do not have permission to access this page.
+            </h3>
         </div>
+        <br><br>
+<!--        <a href="index.html" th:href="@{/}">Back to Home Page</a>-->
+        <a href="index.html" th:href="@{/}" type="button" class="btn btn-outline-success">Back to Home Page</a>
+    </div>
     </div>
 </div>
-<<!--div class="page-title">Access Denied!</div>
-<h3 style="color:red;">Sorry, you can not access this page!</h3>
--->
 <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
         integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
         crossorigin="anonymous"></script>

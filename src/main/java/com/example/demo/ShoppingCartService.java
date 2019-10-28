@@ -33,19 +33,15 @@ public class ShoppingCartService {
     }
 
 
-   /* public void removeProduct(Product product) {
-        if (products.containsKey(product)) {
-            if (products.get(product) > 1)
+      public void removeProduct(Product product) {
+        if(products.containsKey(product)){
+            if (products.get(product)>1) {
                 products.replace(product, products.get(product) - 1);
-            else if (products.get(product) == 1) {
-                  products.remove(product);
+            } else if (products.get(product) == 1) {
+                products.remove(product);
+            }
             }
         }
-    }*/
-    public void removeProduct(Product product) {
-                        products.remove(product);
-
-    }
 
 
     public Map<Product, Integer> getProductsInCart() {

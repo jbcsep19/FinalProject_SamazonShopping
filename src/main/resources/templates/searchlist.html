@@ -30,7 +30,8 @@
                 Description: <span th:text="${product.description}"></span><br>
                 <!--            Posted Date: <span th:text="${#dates.format(job.date, 'MM-dd-yyyy')}"></span><br>-->
                 Price: <span th:text="${product.price}"></span><br>
-                Image URL: <span th:text="${product.imageURL}"></span><br>
+<!--                Image URL: <span th:text="${product.imageURL}"></span><br>-->
+                Image:<span img th:src="${product.imageURL}" width="50px" hight="50px" alt="product-image"></span><br>
                 Active: <span th:text="${product.active}"></span><br>
             </div>
             <br><br>
