@@ -12,25 +12,28 @@ public class Order {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private long OrderId;
 //    private double total_cost;
-    private String orderStatus;
+    private boolean orderStatus;
 
     @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name="user_id")
     private User user;
+/*
 
     @ManyToMany (mappedBy = "orders")
+    private Collection<Product> products;
+*/
+
+
+    @OneToMany(mappedBy = "order", cascade=CascadeType.ALL)
     private Collection<Product> products;
 
     public Order(){}
 
-    public Order(String orderStatus, User user, Collection<Product> products) {
-
+    public Order(boolean orderStatus) {
         this.orderStatus = orderStatus;
-        this.user = user;
-        this.products = products;
     }
 
-/*public double getTotal_cost() {
+    /*public double getTotal_cost() {
         return total_cost;
     }
 
@@ -59,15 +62,15 @@ public class Order {
 
     public void setOrderId(long orderId) { this.OrderId = orderId; }
 
-    public String getOrderStatus() {
+    public boolean isOrderStatus() {
         return orderStatus;
     }
 
-    public void setOrderStatus(String orderStatus) {
+    public void setOrderStatus(boolean orderStatus) {
         this.orderStatus = orderStatus;
     }
 
-    public String calculateCost(){
+   /* public String calculateCost(){
         double total = 0.0;
         ArrayList<Product> products = new ArrayList<>(getProducts());
         for (Product prod : products){
@@ -100,7 +103,7 @@ public class Order {
 
         return Double.toString(shipping + productCost);
     }
-
+*/
 
 }
 /*

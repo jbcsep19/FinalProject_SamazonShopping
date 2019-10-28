@@ -17,6 +17,7 @@
 
 <br>
 
+<!--
 
 <div class="container">
     <div class="row">
@@ -41,14 +42,14 @@
                 </tr>
                 </thead>
                 <tbody>
-<!--                <span th:if="${myuser.product.productId == product.productId}">-->
+&lt;!&ndash;                <span th:if="${myuser.product.productId == product.productId}">&ndash;&gt;
                 <tr th:each="product : ${products}">
-<!--                    <td th:text="${product.firstName}"></td>-->
-<!--<tr>-->
+&lt;!&ndash;                    <td th:text="${product.firstName}"></td>&ndash;&gt;
+&lt;!&ndash;<tr>&ndash;&gt;
                     <td th:text="${product.name}"></td>
                     <td th:text="${product.description}"></td>
                     <td th:text="${product.price}"></td>
-                    <!--                    <td th:text="${product.imageURL}"></td>-->
+                    &lt;!&ndash;                    <td th:text="${product.imageURL}"></td>&ndash;&gt;
                     <td img src="${product.imageURL}" alt=" " class="card-img-top" ></td>
                     <td th:text="${product.active}"></td>
                     <td>
@@ -59,16 +60,52 @@
                         </div>
 
                         <a th:href="@{/detail/{id}(id=${product.productId})}" type="button" class="btn btn-outline-success">Details</a>
-<!--                        <a th:href="@{/addtoCart/{id}(id=${product.productId})}" type="button" class="btn btn-outline-success">Add to Cart</a> - -->
+&lt;!&ndash;                        <a th:href="@{/addtoCart/{id}(id=${product.productId})}" type="button" class="btn btn-outline-success">Add to Cart</a> - &ndash;&gt;
                     </td>
                 </tr>
-<!--                </span>-->
+&lt;!&ndash;                </span>&ndash;&gt;
                 </tbody>
             </table>
         </div>
     </div>
 </div>
+-->
 
+
+
+<div class="container">
+
+    <h1 class="jumbotron">
+        <span sec:authentication="name"></span>'s Shopping Cart
+    </h1>
+
+    <div class="alert alert-info" th:if="${outOfStockMessage}" th:utext="${outOfStockMessage}"></div>
+
+    <div class="panel-default well" th:each="product : ${products.entrySet()}">
+        <div class="panel-heading">
+            <h1><a th:text="${product.getKey().name}" th:href="@{'/product/' + ${product.getKey().productId}}">Title</a></h1>
+            <h3 th:text="${product.getKey().description}">Description</h3>
+        </div>
+        <div class="row panel-body">
+            <div th:inline="text" class="col-md-2">Price: $ [[${product.getKey().price}]] </div>
+            <div th:inline="text" class="col-md-9">Quantity: [[${product.getValue()}]]</div>
+            <a th:href="@{/removeProduct/{id}(id=${product.getKey().productId})}" class="col-md-1">
+                <button type="button" class="btn btn-primary" th:text="Remove">Remove</button>
+            </a>
+        </div>
+        <br></br>
+    </div>
+
+    <div class="row panel-body">
+        <h4 class="col-md-11" th:inline="text">Total: $ [[${total}]]</h4>
+        <h4 class="col-md-11" th:inline="text">Shipping cost: $ [[${shippingCost}]]</h4>
+        <h2 class="col-md-11" th:inline="text">Grand Total: $ [[${grandTotal}]]</h2>
+        <a th:href="@{/simpleemail}" class="col-md-1">
+            <button type="button" class="btn btn-danger" th:text="Checkout">Checkout</button>
+        </a>
+    </div>
+
+</div>
 
 
 <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>

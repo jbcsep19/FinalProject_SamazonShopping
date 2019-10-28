@@ -1,7 +1,11 @@
 package com.example.demo;
 
 import javax.persistence.*;
+import javax.validation.constraints.DecimalMin;
+import javax.validation.constraints.Min;
+import java.math.BigDecimal;
 import java.util.Collection;
+import java.util.Objects;
 
 @Entity
 public class Product {
@@ -15,10 +19,25 @@ public class Product {
     private String imageURL;
     private boolean active;
 
-    @ManyToMany
+
+    @Column(name = "quantity")
+    @Min(value = 0, message = "*Quantity has to be non negative number")
+    private Integer quantity;
+
+   /* @Column(name = "price", nullable = false)
+    @DecimalMin(value = "0.00", message = "*Price has to be non negative number")
+    private BigDecimal price;
+*/
+    /*@ManyToMany
+   *//* @JoinTable(joinColumns = @JoinColumn(name="product_id"),
+            inverseJoinColumns = @JoinColumn(name="order_id"))*//*
+    private   Collection<Order> orders;*/
+
+    @ManyToOne (fetch = FetchType.EAGER)
+    @JoinColumn(name ="order_id")
    /* @JoinTable(joinColumns = @JoinColumn(name="product_id"),
             inverseJoinColumns = @JoinColumn(name="order_id"))*/
-    private   Collection<Order> orders;
+    private Order order;
 
 
     @ManyToOne (fetch = FetchType.EAGER)
@@ -31,6 +50,8 @@ public class Product {
 
     public Product(){}
 
+
+
     public Product(String name, String description, String price, String image, boolean active){
         this.name = name;
         this.description = description;
@@ -39,12 +60,21 @@ public class Product {
         this.active = active;
     }
 
+
     public String getName() {
         return name;
     }
 
     public void setName(String name) {
         this.name = name;
+    }
+
+    public Integer getQuantity() {
+        return quantity;
+    }
+
+    public void setQuantity(Integer quantity) {
+        this.quantity = quantity;
     }
 
     public String getPrice() {
@@ -75,18 +105,35 @@ public class Product {
         this.description = description;
     }
 
-    public Collection<Order> getOrders() {
+    public Order getOrder() {
+        return order;
+    }
+
+    public void setOrder(Order order) {
+        this.order = order;
+    }
+
+    public Collection<WishList> getWishLists() {
+        return wishLists;
+    }
+
+    public void setWishLists(Collection<WishList> wishLists) {
+        this.wishLists = wishLists;
+    }
+
+
+    /* public Collection<Order> getOrders() {
         return orders;
     }
 
 
     public void setOrders(Collection<Order> orders) {
         this.orders = orders;
-    }
+    }*/
 
-    public void addOrder(Order order){
-        this.orders.add(order);
-    }
+//    public void addOrder(Order order){
+//        this.orders.add(order);
+//    }
 
     public String getImageURL() {
         return imageURL;
@@ -114,5 +161,35 @@ public class Product {
                 ", imageURL='" + imageURL + '\'' +
                 ", active=" + active +
                 '}';
+    }
+
+    /*@Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+
+        Product product = (Product) o;
+
+        return productId.equals(product.productId);
+    }
+
+    @Override
+    public int hashCode() {
+        return productId.hashCode();
+    }*/
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+//        if (!(o instanceof Product))
+        if (o == null || getClass() != o.getClass())
+            return false;
+        Product product = (Product) o;
+        return getProductId() == product.getProductId();
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash();
     }
 }
