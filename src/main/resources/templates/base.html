@@ -58,7 +58,7 @@
                             <span class="text">samazonapp@gmail.com</span>
                         </div>
                         <div class="col-md-5 pr-4 d-flex topper align-items-center text-lg-right">
-                            <span class="text">3-5 Business days delivery &amp; Free Returns</span>
+                            <span class="text">3-5 Business days delivery  &amp; Free Shipping for $50+ &amp; Free Returns</span>
                         </div>
                     </div>
                 </div>
@@ -89,20 +89,20 @@
                 <li sec:authorize="isAuthenticated()" class="nav-link " style="color: gray" th:inline="text">
                     Welcome [[${#authentication.name}]]!
                 </li>
-                <li class="nav-item"><a href="index.html" class="nav-link">Home</a></li>
+                <li class="nav-item"><a href="/index" class="nav-link">Home</a></li>
                 <li class="nav-item active"><a href="/aboutus" class="nav-link">About</a></li>
                 <li class="nav-item dropdown">
                     <a class="nav-link dropdown-toggle" href="#" id="dropdown04" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Shop</a>
                     <div class="dropdown-menu" aria-labelledby="dropdown04">
-                        <a class="dropdown-item" href="product.html">Products</a>
+                        <a class="dropdown-item" href="/product">Products</a>
                         <a class="dropdown-item" href="/list">Products List</a>
                         <a class="dropdown-item" href="/wishlist">Wishlist</a>
-                        <a class="dropdown-item" href="cart.html">Cart</a>
+                        <a class="dropdown-item" href="/cart">Cart</a>
                         <a class="dropdown-item" href="/addtoCart">Order</a>
-                        <a class="dropdown-item" href="checkout.html">Checkout</a>
+                        <a class="dropdown-item" href="/checkout">Checkout</a>
                     </div>
                 </li>
-                <li class="nav-item"><a href="xcontact" class="nav-link">Contact</a></li>
+                <li class="nav-item"><a href="/xcontact" class="nav-link">Contact</a></li>
                 <li class="nav-item dropdown">
                     <a class="nav-link dropdown-toggle" href="#" id="dropdown06" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Account</a>
                     <div class="dropdown-menu" aria-labelledby="dropdown04">
