@@ -1,4 +1,4 @@
-body{
+/*body{
   background: url("https://res.cloudinary.com/drjbwsmae/image/upload/v1572273292/magneto/magneto/magnetobg2_i7sv7m.jpg") no-repeat center center fixed;
   -webkit-background-size: cover;
   -moz-background-size: cover;
@@ -6,4 +6,113 @@ body{
   background-size: cover;
   font-family: 'Montserrat', sans-serif;
   font-weight: 800;
+}*/
+
+body{
+  background-image: url(../images/magnetobg2.jpg);
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+
+div{
+  background-color: white;
+  background-position: center;
+  margin: 5%;
+  border-style: double;
+  border-color: beige;
+  border-width:5px;
+
+}
+
+h1{
+  font-weight: bold;
+  color: green;
+  text-align: center;
+}
+h2{
+  color: black;
+  text-align: center;
+}
+h3{
+  color: black;
+  text-align: center;
+}
+h4{
+  color: gray;
+  text-align: center;
+}
+h5{
+  color: green;
+  text-align: center;
+}
+p{
+
+
+}
+
+table{
+
+}
+
+img {
+
+}
+
+
+
+/* Style the header */
+header {
+  background-color: #666;
+  padding: 30px;
+  text-align: center;
+  font-size: 35px;
+  color: white;
+}
+
+/* Create two columns/boxes that floats next to each other */
+nav {
+  float: left;
+  width: 30%;
+  height: 300px; /* only for demonstration, should be removed */
+  background: #ccc;
+  padding: 20px;
+}
+
+/* Style the list inside the menu */
+nav ul {
+  list-style-type: none;
+  padding: 0;
+}
+
+article {
+  float: left;
+  padding: 20px;
+  width: 70%;
+  background-color: #f1f1f1;
+  height: 300px; /* only for demonstration, should be removed */
+}
+
+/* Clear floats after the columns */
+section:after {
+  content: "";
+  display: table;
+  clear: both;
+}
+
+/* Style the footer */
+footer {
+  background-color: #777;
+  padding: 10px;
+  text-align: center;
+  color: white;
+}
+
+/* Responsive layout - makes the two columns/boxes stack on top of each other instead of next to each other, on small screens */
+@media (max-width: 600px) {
+  nav, article {
+    width: 100%;
+    height: auto;
+  }
+
+
 }
