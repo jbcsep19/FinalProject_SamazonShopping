@@ -17,29 +17,20 @@ public class SimpleEmailController {
     private JavaMailSender sender;
 
     @Autowired
-    UserService userService
-            ;
+    UserService userService;
+
+    @Autowired
+    SimpleEmailService simpleEmailService;
+
     @RequestMapping("/simpleemail")
     @ResponseBody
     String home() {
         try {
-            sendEmail();
+            simpleEmailService.sendEmail();
             return "Email Sent!";
         }catch(Exception ex) {
             return "Error in sending email: "+ex;
         }
-    }
-
-    private void sendEmail() throws Exception{
-        MimeMessage message = sender.createMimeMessage();
-        MimeMessageHelper helper = new MimeMessageHelper(message);
-
-//        helper.setTo("skbijukchhe@gmail.com");
-        helper.setTo(userService.getUser().getEmail());
-        helper.setText("How are you?");
-        helper.setSubject("Hi");
-
-        sender.send(message);
     }
 }
 

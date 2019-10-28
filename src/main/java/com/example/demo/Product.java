@@ -24,14 +24,6 @@ public class Product {
     @Min(value = 0, message = "*Quantity has to be non negative number")
     private Integer quantity;
 
-   /* @Column(name = "price", nullable = false)
-    @DecimalMin(value = "0.00", message = "*Price has to be non negative number")
-    private BigDecimal price;
-*/
-    /*@ManyToMany
-     *//* @JoinTable(joinColumns = @JoinColumn(name="product_id"),
-            inverseJoinColumns = @JoinColumn(name="order_id"))*//*
-    private   Collection<Order> orders;*/
 
     @ManyToOne (fetch = FetchType.EAGER)
     @JoinColumn(name ="order_id")
@@ -122,17 +114,6 @@ public class Product {
     }
 
 
-    /* public Collection<Order> getOrders() {
-        return orders;
-    }
-    public void setOrders(Collection<Order> orders) {
-        this.orders = orders;
-    }*/
-
-//    public void addOrder(Order order){
-//        this.orders.add(order);
-//    }
-
     public String getImageURL() {
         return imageURL;
     }
@@ -161,17 +142,6 @@ public class Product {
                 '}';
     }
 
-    /*@Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
-        Product product = (Product) o;
-        return productId.equals(product.productId);
-    }
-    @Override
-    public int hashCode() {
-        return productId.hashCode();
-    }*/
 
     @Override
     public boolean equals(Object o) {
