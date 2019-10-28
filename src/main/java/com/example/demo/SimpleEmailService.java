@@ -33,14 +33,14 @@ public class SimpleEmailService {
         helper.setSubject("Samazon Shopping Details");
         helper.setText(
                 "Dear " + userService.getUser().getFirstName() + ",\n\n"
-                        + "Thank you for shopping with Samazon Shopping Site!!! \n\n " +
+                        + "Thank you for shopping with Samazon Shopping Site !!! \n\n " +
 
-                        " Your details are : \n\n" +
+                        " Your shopping details are : \n\n" +
 
                         " Total Price: $ " + shoppingCartService.getTotal().toString() +
                         " \n Shipping charge: $ " + shoppingCartService.getShipping().toString() +
                         " \n Grand Total: $ " + shoppingCartService.getGrandTotal().toString() +
-                        "\n Have a great day and thanks again!\n\n" +
+                        "\n\n Have a great day and thanks again !\n\n" +
                         " Samazon Shopping Site"
         );
         sender.send(message);

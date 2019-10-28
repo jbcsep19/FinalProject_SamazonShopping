@@ -17,61 +17,6 @@
 
 <br>
 
-<!--
-
-<div class="container">
-    <div class="row">
-        <div class="col">
-
-            <div class="alert alert text-center" style="background-color: lightsalmon" role="alert">
-                <h2>Shopping cart</h2>
-            </div>
-
-
-            <h1 th:text="${productnames}"></h1>
-
-            <table class="table">
-                <thead class="thead-dark">
-                <tr>
-                    <th scope="col">Name</th>
-                    <th scope="col">Description</th>
-                    <th scope="col">Price</th>
-                    <th scope="col">Image URL</th>
-                    <th scope="col">Active</th>
-                    <th scope="col">Actions</th>
-                </tr>
-                </thead>
-                <tbody>
-&lt;!&ndash;                <span th:if="${myuser.product.productId == product.productId}">&ndash;&gt;
-                <tr th:each="product : ${products}">
-&lt;!&ndash;                    <td th:text="${product.firstName}"></td>&ndash;&gt;
-&lt;!&ndash;<tr>&ndash;&gt;
-                    <td th:text="${product.name}"></td>
-                    <td th:text="${product.description}"></td>
-                    <td th:text="${product.price}"></td>
-                    &lt;!&ndash;                    <td th:text="${product.imageURL}"></td>&ndash;&gt;
-                    <td img src="${product.imageURL}" alt=" " class="card-img-top" ></td>
-                    <td th:text="${product.active}"></td>
-                    <td>
-
-                        <div sec:authorize="hasAuthority('ADMIN')">
-                            <a th:href="@{/update/{id}(id=${product.productId})}" type="button" class="btn btn-outline-success">Update</a>
-                            <a th:href="@{/delete/{id}(id=${product.productId})}" type="button" class="btn btn-outline-success">Delete</a>
-                        </div>
-
-                        <a th:href="@{/detail/{id}(id=${product.productId})}" type="button" class="btn btn-outline-success">Details</a>
-&lt;!&ndash;                        <a th:href="@{/addtoCart/{id}(id=${product.productId})}" type="button" class="btn btn-outline-success">Add to Cart</a> - &ndash;&gt;
-                    </td>
-                </tr>
-&lt;!&ndash;                </span>&ndash;&gt;
-                </tbody>
-            </table>
-        </div>
-    </div>
-</div>
--->
-
-
 
 <div class="container">
 
@@ -90,7 +35,7 @@
             <div th:inline="text" class="col-md-2">Price: $ [[${product.getKey().price}]] </div>
             <div th:inline="text" class="col-md-9">Quantity: [[${product.getValue()}]]</div>
             <a th:href="@{/removeProduct/{id}(id=${product.getKey().productId})}" class="col-md-1">
-                <button type="button" class="btn btn-success" th:text="Remove">Remove</button>
+                <button type="button" class="btn btn-primary" th:text="Remove">Remove</button>
             </a>
         </div>
         <br></br>
@@ -100,7 +45,7 @@
         <h4 class="col-md-11" th:inline="text">Total: $ [[${total}]]</h4>
         <h4 class="col-md-11" th:inline="text">Shipping cost: $ [[${shippingCost}]]</h4>
         <h2 class="col-md-11" th:inline="text">Grand Total: $ [[${grandTotal}]]</h2>
-        <a th:href="@{/simpleemail}" class="col-md-1">
+        <a th:href="@{/checkout}" class="col-md-1">
             <button type="button" class="btn btn-danger" th:text="Checkout">Checkout</button>
         </a>
     </div>
@@ -121,27 +66,3 @@
         integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
         crossorigin="anonymous"></script>
 
-<!--
-<h1>Product List</h1>
-<a href="/add">Add a Product</a><br />
-<table>
-    <tr>
-        <th>Name</th>
-        <th>Description</th>
-        <th>Price</th>
-        <td>Actions</td>
-    </tr>
-    <tr th:each="product: ${products}">
-        <td th:text="${product.name}"></td>
-        <td th:text="${product.description}"></td>
-        <td th:text="${product.price}"></td>
-        <td>
-            <a th:href="@{/addtoCart/{id}(id=${product.productId})}">Add to Cart</a> -
-            <a th:href="@{/detail/{id}(id=${product.productId})}">Details</a> -
-            <a th:href="@{/delete/{id}(id=${product.productId})}">Delete</a>
-        </td></tr>
-</table>
-
-
-</body>
-</html>-->

@@ -1,73 +1,18 @@
-<!--
 <!DOCTYPE html>
 <html lang="en" xmlns:th="https://www.thymeleaf.org">
-<head>
-    <meta charset="UTF-8">
-    <title>Registration Page</title>
-</head>
-<body>
-
-<div th:insert="base :: navbar"></div>
-<br><br><br>
-
-<h4> New User Registration</h4>
-
-<form autocomplete="off" action="#" th:action="@{/register}" th:object="${user}" method ="post">
-
-    First Name<mark><strong>
-    <span th:if ="${#fields.hasErrors('firstName')}"
-          th:errors="*{firstName}">First Name Error</span></strong></mark>
-    <input type ="text" id="firstName" placeholder="First Name" th:field="*{firstName}" /><br />
-
-    Last Name<mark><strong>
-    <span th:if ="${#fields.hasErrors('lastName')}"
-          th:errors="*{lastName}">Last Name Error</span></strong></mark>
-    <input type ="text" id="lastName" placeholder="Last Name" th:field="*{lastName}" /><br />
-
-    Email<mark><strong>
-    <span th:if ="${#fields.hasErrors('email')}"
-          th:errors="*{email}">Email Error</span></strong></mark>
-    <input type ="text" id="email" placeholder="Email" th:field="*{email}" /><br />
-
-    Username<mark><strong>
-    <span th:if ="${#fields.hasErrors('username')}"
-          th:errors="*{username}">Username Error</span></strong></mark>
-    <input type ="text" id="username" placeholder="Username" th:field="*{username}" /><br />
-
-    Password<mark><strong>
-    <span th:if ="${#fields.hasErrors('password')}"
-          th:errors="*{password}">Password Error</span></strong></mark>
-    <input type ="password" id="password" placeholder="Password" th:field="*{password}" /><br />
-
-    Position<mark><strong>
-    <span th:if ="${#fields.hasErrors('position')}"
-          th:errors="*{position}">PositionError</span></strong></mark>
-    <input type ="text" id="position" placeholder="Position" th:field="*{position}" /><br />
-
-    <button type ="submit" class="btn btn-default">Submit</button>
-
-</form>
-
-</body>
-</html>
--->
-
-<!DOCTYPE html>
-<html lang="en" xmlns:th="https://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
 <head>
     <meta charset="UTF-8">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
           integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
     <link href="https://fonts.googleapis.com/css?family=Roboto&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.1/css/all.css">
-        <title>Registration Page</title>
+    <title>Registration Page</title>
 </head>
 <body>
 
 <!--Navbar-->
 <div th:insert="base :: navbar"></div>
-<br><br><br>
-<!-- END nav -->
+<br>
 
 
 <div class="container">
@@ -76,7 +21,7 @@
         <div class="col">
         </div>
         <div class="col-8">
-            <div class="alert alert-dark text-center" style="background-color: beige" role="alert">
+            <div class="alert alert-dark text-center" style="background-color: lightsalmon" role="alert">
                 <h2> Create a New Account</h2>
                 <p>It's quick and easy.</p>
             </div>
@@ -104,12 +49,14 @@
                         <input type ="text" class="form-control" id="lastName" placeholder="Last Name" th:field="*{lastName}" /><br />
                     </div>
                 </div>
-<!--                <div class="form-group ">-->
-<!--                    <label for="email">Position</label><mark><strong>-->
-<!--                    <span th:if ="${#fields.hasErrors('position')}"-->
-<!--                          th:errors="*{position}">Position Error</span></strong></mark>-->
-<!--                    <input type ="text" class="form-control" id="position" placeholder="Position" th:field="*{position}" /> <br />-->
-<!--                </div>-->
+                <div class="form-group ">
+                    <label for="position">Position</label><mark><strong>
+                    <!--                    Added-->
+
+                    <span th:if ="${#fields.hasErrors('position')}"
+                          th:errors="*{position}">Position Error</span></strong></mark>
+                    <input type ="text" class="form-control" id="position" placeholder="Position" th:field="*{position}" /> <br />
+                </div>
                 <div class="form-group ">
                     <label for="email">Email</label><mark><strong>
                     <span th:if ="${#fields.hasErrors('email')}"
@@ -127,10 +74,7 @@
                     <span th:if ="${#fields.hasErrors('password')}"
                           th:errors="*{password}">Password Error</span></strong></mark>
                     <input type ="password" class="form-control" id="password" placeholder="Password" th:field="*{password}" /><br />
-                </div><br/>
-                Admin <input sec:authorize="hasAuthority('ADMIN')" type="radio" name="role" value="admin"><br/>
-                User    <input type="radio" name="role" checked="checked" value="user"><br/>
-
+                </div>
                 <small class="form-text text-muted">By clicking Sign Up, you agree to our Terms, Data
                     Policy and Cookies Policy. You may receive SMS Notifications from us and can opt out any time
                 </small>
