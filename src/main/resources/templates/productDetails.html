@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th="https:www.thymeleaf.org">
+<html lang="en" xmlns:th="https:www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
 <head>
     <meta charset="UTF-8">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
@@ -9,23 +9,6 @@
     <title>Product Detail</title>
 </head>
 <body>
-<table>
-    <tr>
-        <th>Name</th>
-        <th>Price</th>
-        <th>Description</th>
-        <th>image</th>
-    </tr>
-    <tr><b>
-        <td th:text="${product.name}"></td>
-        <td th:text="${product.price}"></td>
-        <td th:text="${product.description}"></td>
-        <td th:text="${product.imageURL}"></td>
-        <!--           <td><a th:href="@{/addToCart/{productId}(id=${product.productId})}">Add to Cart</a>&nbsp
-                       <a th:href="@{/addToWishList/{productId}(id=${product.productId})}">Add to wish list</a>
-
-<<<<<<< HEAD
-<!--Navbar-->
 <div th:insert="base :: navbar"></div>
 <br>
 
@@ -43,24 +26,19 @@
             Description: <span th:text="${product.description}"></span><br>
 <!--            Posted Date: <span th:text="${#dates.format(job.date, 'MM-dd-yyyy')}"></span><br>-->
             Price: <span th:text="${product.price}"></span><br>
+            <div sec:authorize="hasAuthority('ADMIN')">
             Image URL: <span th:text="${product.imageURL}"></span><br>
+            </div>
             Active: <span th:text="${product.active}"></span><br>
 
         </div>
     </div>
 </div>
 
-<br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
+<br><br><br><br><br><br><br><br><br><br><br>
 <!--Footer-->
 <div th:insert="base :: footer"></div>
 
-=======
-                   </td> -->
-
-    </b>
-    </tr>
-</table>
->>>>>>> c604dc4aa7ce658d2004f61574a6967b388d8fb2
 </body>
 <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
         integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"

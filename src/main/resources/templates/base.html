@@ -60,9 +60,7 @@
                 </li>
 
 
-                <li sec:authorize="isAuthenticated()" class="nav-item text-light">
-                    <a class="nav-link text-white" href="/add">Add product</a>
-                </li>
+
 
                 <li sec:authorize="isAuthenticated()" class="nav-item text-light">
                     <a class="nav-link text-white" href="/list">Product Details</a>
@@ -70,10 +68,12 @@
                 <li sec:authorize="isAuthenticated()" class="nav-item text-light">
                     <a class="nav-link text-white" href="/list">Product List</a>
                 </li>
-                <li sec:authorize="isAuthenticated()" class="nav-item text-light">
+                <li class="nav-item text-light" sec:authorize="hasAuthority('ADMIN')">
                     <a class="nav-link text-white" href="/userlist">User List</a>
                 </li>
-
+                <li class="nav-item text-light"sec:authorize="hasAuthority('ADMIN')" >
+                    <a class="nav-link text-white" href="/add">Add product</a>
+                </li>
                 <li sec:authorize="isAuthenticated()" class="nav-item text-light">
                     <a class="nav-link text-white" href="/">Check out</a>
                 </li>
