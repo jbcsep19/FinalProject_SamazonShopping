@@ -39,13 +39,13 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
                         "/javascript/**").permitAll()
 
 
-                .antMatchers("/admin","/add", "/userlist", "/history")
+                .antMatchers("/admin", "/userlist", "/history")
                 .access("hasAuthority('ADMIN')")
 
                 .antMatchers("/user")
                 .access("hasAuthority('USER')")
 
-                .antMatchers("/info", "/list", "/cart", "/productDetails" )
+                .antMatchers("/info", "/list", "/cart", "/add","/productDetails" ,"/about")
                 .access("hasAnyAuthority('ADMIN','USER')")
 
                 .anyRequest().authenticated()
