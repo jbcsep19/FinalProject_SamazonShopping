@@ -4,7 +4,7 @@ Final Project - Samazon Shopping Site
 Heroku: https://magnetosamazonshopping.herokuapp.com/
 
 Accounts:
-User 
+Usernames: admin password  ;  mark password 
 
 Magneto Group Members:
 * Surendra K Bijukchhe
