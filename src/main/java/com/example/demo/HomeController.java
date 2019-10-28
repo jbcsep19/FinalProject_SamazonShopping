@@ -19,11 +19,6 @@ public class HomeController {
 
     @Autowired
     UserService userService;
-/*
-     @RequestMapping("/")
-    public String index() {
-        return "index";
-    }*/
 
     @RequestMapping("/about")
     public String getAbout(Model model){
@@ -52,24 +47,6 @@ public class HomeController {
         model.addAttribute("product", new Product());
         return "productform";
     }
-
-    /*@PostMapping("/processjob")
-    public String processForm(@ModelAttribute Job job, @RequestParam(name = "date") String date){
-        String pattern = "yyyy-MM-dd'T'hh:mm";
-        try{
-            String formattedDate = date.substring(1,date.length()-1);
-            SimpleDateFormat simpleDateFormat = new SimpleDateFormat(pattern);
-            Date realDate = simpleDateFormat.parse(formattedDate);
-            job.setDate(realDate);
-//            job.setUser(userService.getUser());
-        }
-        catch(java.text.ParseException e){
-            e.printStackTrace();
-        }
-        job.setUser(userService.getUser());
-        jobRepository.save(job);
-        return "redirect:/list";
-    }*/
 
 
     @PostMapping("/processproduct")
@@ -106,8 +83,6 @@ public class HomeController {
         model.addAttribute("product", productRepository.findById(id).get());
 
         return "productform";
-
-//        return "add";
     }
 
     @RequestMapping("/updateUser/{id}")
