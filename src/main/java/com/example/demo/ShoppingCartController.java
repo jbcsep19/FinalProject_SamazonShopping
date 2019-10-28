@@ -3,17 +3,10 @@ package com.example.demo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
-
-import javax.validation.Valid;
-import java.util.ArrayList;
-import java.util.Collection;
-import java.util.List;
-import java.util.Set;
 
 @Controller
 public class ShoppingCartController {
@@ -31,14 +24,18 @@ public class ShoppingCartController {
     @Autowired
     OrderRepository orderRepository;
 
+
+    private  final SimpleEmailService simpleEmailService;
+
     private final ShoppingCartService shoppingCartService;
 
     private final ProductService productService;
 
     @Autowired
-    public ShoppingCartController(ShoppingCartService shoppingCartService, ProductService productService) {
+    public ShoppingCartController(ShoppingCartService shoppingCartService, ProductService productService,  SimpleEmailService simpleEmailService ) {
         this.shoppingCartService = shoppingCartService;
         this.productService = productService;
+        this.simpleEmailService = simpleEmailService;
     }
 
 
@@ -231,13 +228,21 @@ public class ShoppingCartController {
 
         return shoppingCart();
     }*/
-    /*@RequestMapping("/checkout")
-    public String checkout(){
-       *//* shoppingCartService.checkout();
-        shoppingCartService.getGrandTotal().toString();*//*
-        return "cartlist";
-    }*/
-    @GetMapping("checkout")
+    @RequestMapping("/checkout")
+    public String checkout(Model model){
+//        shoppingCartService.checkout();
+        try {
+            simpleEmailService.sendEmail();
+        }
+        catch(Exception e){
+            return "Error in sending email: "+e;
+        }
+        model.addAttribute("total",   shoppingCartService.getTotal().toString());
+        model.addAttribute("shippingCost",shoppingCartService.getShipping().toString());
+        model.addAttribute("grandTotal", shoppingCartService.getGrandTotal().toString());
+        return "checkoutlist";
+    }
+    /*@GetMapping("checkout")
     public ModelAndView checkout() {
         try {
             shoppingCartService.checkout();
@@ -246,5 +251,5 @@ public class ShoppingCartController {
         }
         return shoppingCart();
     }
-
+*/
 }
