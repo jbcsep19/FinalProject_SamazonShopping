@@ -90,7 +90,7 @@
             <div th:inline="text" class="col-md-2">Price: $ [[${product.getKey().price}]] </div>
             <div th:inline="text" class="col-md-9">Quantity: [[${product.getValue()}]]</div>
             <a th:href="@{/removeProduct/{id}(id=${product.getKey().productId})}" class="col-md-1">
-                <button type="button" class="btn btn-primary" th:text="Remove">Remove</button>
+                <button type="button" class="btn btn-success" th:text="Remove">Remove</button>
             </a>
         </div>
         <br></br>
